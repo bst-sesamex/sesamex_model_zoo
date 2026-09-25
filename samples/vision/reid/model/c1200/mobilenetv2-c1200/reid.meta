@@ -1,0 +1,84 @@
+{
+  "name": "reid",
+  "comp_version": "7.1.0-63156d8c",
+  "device": "C1200",
+  "meta_fmt_ver": 0.5,
+  "net_fw_commitid": "1e095d5e",
+  "has_edp_gemm": "Y",
+  "dsp_op": "N",
+  "net_batch_size": 1,
+  "in_tensors": {
+    "num": 1,
+    "tensor_0": {
+      "name": "rf_000_DMA_IN_000_ts",
+      "tensor_name": "images",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        1.0
+      ],
+      "ctype": "RGB888P",
+      "dorder": "WHD",
+      "dtype": "UINT8",
+      "Dim": {
+        "size": [
+          128,
+          256,
+          3,
+          1
+        ],
+        "pitch": [
+          128,
+          256,
+          3,
+          1
+        ]
+      }
+    }
+  },
+  "out_tensors": {
+    "num": 1,
+    "tensor_0": {
+      "name": "ddr_rf_output_ts",
+      "tensor_name": "output",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        0.000244140625
+      ],
+      "ctype": "DEFAULT",
+      "dorder": "DWH",
+      "dtype": "INT16",
+      "Dim": {
+        "size": [
+          1280,
+          1,
+          1,
+          1
+        ],
+        "pitch": [
+          1280,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "activation": {
+    "size": 57344
+  },
+  "weight": {
+    "size": 3294464
+  },
+  "task_num": 2,
+  "dag": {
+    "size": 3520,
+    "num": 1
+  },
+  "model_uid": 1543667682
+}

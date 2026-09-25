@@ -1,0 +1,33 @@
+# BSTNNX 8.3.1 image calibration example.
+# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/reid/train/bst_deploy/compiler/main.yaml.
+# The ONNX is included under assets/. Supply representative calibration images and verify preprocessing.
+# Legacy ReID YAML is generic; verify that the selected ONNX is the OSNet variant before compiling.
+model_path: ./assets/osnet/osnet_x1_0_market_256x128_amsgrad_ep150_stp60_lr0.0015_b64_fb10_softmax_labelsmooth_flip.onnx
+model_name: reid
+result_dir: ./output/osnet
+device_engine: C1200
+logging_level: INFO
+Quant:
+  inputs:
+  - name: images
+    data_reader_method: image_folder_data_reader
+    input_data_set_path: ./calibration_images/osnet
+    image_process_config:
+      source_image_format: BGR
+      target_image_format: RGB
+      mean:
+      - 123.675
+      - 116.28
+      - 103.53
+      scale:
+      - 0.01708984375
+      - 0.017578125
+      - 0.017333984375
+  size_limit: 50
+  accuracy_level: 1
+Backend:
+  net_batch_size: 1
+  partition:
+    partition_method: partition_greedy
+  emulation:
+    profiling_mode: 2

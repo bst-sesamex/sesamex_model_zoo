@@ -1,0 +1,212 @@
+schema_version: 1
+release:
+  platform: aura-kalos
+  version: "1.0.0"
+# Aura C1200 C++ model measurements; three warmup-once rounds, median latency.
+# Timing method: utils/tools/BUILD_AND_BENCHMARK.md; raw device logs are kept outside this repository.
+benchmarks:
+  - id: yolov8n-det-cpp-aura
+    sample_id: yolov8
+    variant_id: yolov8n-det
+    asset_filename: yolov8n-det.Enrsd.bin
+    input: { shape: [3, 640, 640], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 392.46, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 2.548, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/yolov8/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: yolov8n-seg-cpp-aura
+    sample_id: yolov8
+    variant_id: yolov8n-seg
+    asset_filename: yolov8n-seg.Enrsd.bin
+    input: { shape: [3, 640, 640], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 370.23, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 2.701, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/yolov8/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: yolov8n-pose-cpp-aura
+    sample_id: yolov8
+    variant_id: yolov8n-pose
+    asset_filename: yolov8n-pose.Enrsd.bin
+    input: { shape: [3, 640, 640], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 399.36, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 2.504, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/yolov8/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: yolov10n-det-aura
+    sample_id: yolov12
+    variant_id: yolov10n-det
+    asset_filename: yolov10n-det.Enrsd.bin
+    input: { shape: [3, 640, 640], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 207.13, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 4.828, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/yolov12/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: yolov11n-det-aura
+    sample_id: yolov12
+    variant_id: yolov11n-det
+    asset_filename: yolov11n-det.Enrsd.bin
+    input: { shape: [3, 640, 640], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 218.20, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 4.583, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/yolov12/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: yolov12n-det-aura
+    sample_id: yolov12
+    variant_id: yolov12n-det
+    asset_filename: yolov12n-det.Enrsd.bin
+    input: { shape: [3, 640, 640], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 39.95, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 25.032, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/yolov12/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: yolov5m-det-aura
+    sample_id: yolov5
+    variant_id: yolov5m
+    asset_filename: yolov5m.sdag.bin
+    input: { shape: [3, 640, 640], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 145.84, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 6.857, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/yolov5/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: fcos-det-aura
+    sample_id: fcos
+    variant_id: fcos
+    asset_filename: fcos.Enrsd.bin
+    input: { shape: [3, 896, 896], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 50.79, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 19.689, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/fcos/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: resnet18-cls-aura
+    sample_id: classification
+    variant_id: resnet18
+    asset_filename: fcos.Enrsd.bin
+    input: { shape: [3, 224, 224], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 763.36, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 1.310, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/classification/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: resnet34-cls-aura
+    sample_id: classification
+    variant_id: resnet34
+    asset_filename: fcos.Enrsd.bin
+    input: { shape: [3, 224, 224], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 490.44, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 2.039, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/classification/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: mobilenetv2-cls-aura
+    sample_id: classification
+    variant_id: mobilenetv2
+    asset_filename: fcos.Enrsd.bin
+    input: { shape: [3, 224, 224], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 1464.13, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 0.683, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/classification/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: condlanenet-lane-aura
+    sample_id: condlanenet
+    variant_id: condlanenet
+    asset_filename: condlanenet.sdag.bin
+    input: { shape: [3, 320, 800], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 148.54, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 6.732, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    accuracy:
+      - { metric: F1, value: 0.953, unit: ratio, qualifier: exact, dataset: TuSimple, scope: "draft-recorded figure; reproduction steps in evaluator" }
+    source: { path: samples/vision/condlanenet/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: lightstereo-stereo-aura
+    sample_id: openstereo2
+    variant_id: lightstereo
+    asset_filename: lightstereo.sdag.bin
+    input: { shape: [2, 3, 544, 960], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 14.64, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 68.291, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    accuracy:
+      - { metric: EPE, value: 1.88, unit: pixels, qualifier: exact, scope: "draft-recorded figure (test set A)" }
+      - { metric: EPE, value: 2.02, unit: pixels, qualifier: exact, scope: "draft-recorded figure (test set B)" }
+    source: { path: samples/vision/openstereo2/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: landmark-56-cpp-aura
+    sample_id: landmark
+    variant_id: size56
+    asset_filename: landmark.Enrsd.bin
+    input: { shape: [3, 56, 56], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 2403.85, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 0.416, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/landmark/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: landmark-224-cpp-aura
+    sample_id: landmark
+    variant_id: size224
+    asset_filename: landmark.Enrsd.bin  # per-variant directory
+    input: { shape: [3, 224, 224], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 1506.02, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 0.664, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/landmark/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: reid-mobilenetv2-aura
+    sample_id: reid
+    variant_id: mobilenetv2
+    asset_filename: reid.Enrsd.bin
+    input: { shape: [3, 256, 128], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 1785.71, unit: fps, qualifier: exact, scope: "1000 / median latency of 6 paired calls" }
+      - { metric: latency, value: 0.560, unit: ms, qualifier: exact, scope: "median of 6 paired C++ run+wait measurements across 3 rounds" }
+    source: { path: samples/vision/reid/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: reid-osnet-aura
+    sample_id: reid
+    variant_id: osnet
+    asset_filename: reid.Enrsd.bin
+    input: { shape: [3, 256, 128], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 203.52, unit: fps, qualifier: exact, scope: "1000 / median latency of 6 paired calls" }
+      - { metric: latency, value: 4.9135, unit: ms, qualifier: exact, scope: "median of 6 paired C++ run+wait measurements across 3 rounds" }
+    source: { path: samples/vision/reid/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: reid-resnet50-aura
+    sample_id: reid
+    variant_id: resnet50
+    asset_filename: reid.Enrsd.bin
+    input: { shape: [3, 256, 128], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 469.04, unit: fps, qualifier: exact, scope: "1000 / median latency of 6 paired calls" }
+      - { metric: latency, value: 2.132, unit: ms, qualifier: exact, scope: "median of 6 paired C++ run+wait measurements across 3 rounds" }
+    source: { path: samples/vision/reid/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: unet-512x512-seg-aura
+    sample_id: unet-seg
+    variant_id: unet_512x512
+    asset_filename: reid.Enrsd.bin
+    input: { shape: [3, 512, 512], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 35.51, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 28.158, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/unet-seg/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }
+  - id: unet-512x1024-seg-aura
+    sample_id: unet-seg
+    variant_id: unet_512x1024
+    asset_filename: reid.Enrsd.bin
+    input: { shape: [3, 512, 1024], format: RGB888P }
+    environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
+    performance:
+      - { metric: throughput, value: 18.15, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
+      - { metric: latency, value: 55.111, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+    source: { path: samples/vision/unet-seg/evaluator/README.md, section: "Performance Benchmark", provenance: C1200-sample-benchmark }

@@ -1,0 +1,151 @@
+{
+  "name": "lightstereo",
+  "comp_version": "8.3.1-de1720ad",
+  "device": "C1200",
+  "meta_fmt_ver": 0.5,
+  "net_fw_commitid": "288cecf4",
+  "model_uid": 3590341604,
+  "has_edp_gemm": "Y",
+  "dsp_op": "Y",
+  "net_batch_size": 1,
+  "in_tensors": {
+    "num": 2,
+    "tensor_0": {
+      "name": "rf_000_DMA_IN_000_ts",
+      "tensor_name": "left_img",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        1.0
+      ],
+      "ctype": "RGB888P",
+      "dorder": "WHD",
+      "dim_len": 4,
+      "dtype": "UINT8",
+      "Dim": {
+        "size": [
+          960,
+          544,
+          3,
+          1
+        ],
+        "pitch": [
+          960,
+          544,
+          3,
+          1
+        ]
+      }
+    },
+    "tensor_1": {
+      "name": "rf_001_DMA_IN_000_ts",
+      "tensor_name": "right_img",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        1.0
+      ],
+      "ctype": "RGB888P",
+      "dorder": "WHD",
+      "dim_len": 4,
+      "dtype": "UINT8",
+      "Dim": {
+        "size": [
+          960,
+          544,
+          3,
+          1
+        ],
+        "pitch": [
+          960,
+          544,
+          3,
+          1
+        ]
+      }
+    }
+  },
+  "out_tensors": {
+    "num": 2,
+    "tensor_0": {
+      "name": "rf_137_POOL_016_ts",
+      "tensor_name": "onnx::Softmax_2152",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        0.0625
+      ],
+      "ctype": "DEFAULT",
+      "dorder": "DWH",
+      "dim_len": 4,
+      "dtype": "INT8",
+      "Dim": {
+        "size": [
+          9,
+          960,
+          544,
+          1
+        ],
+        "pitch": [
+          16,
+          960,
+          544,
+          1
+        ]
+      }
+    },
+    "tensor_1": {
+      "name": "rf_019_CONV_029_ts",
+      "tensor_name": "onnx::Softmax_2114",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 9,
+      "dequant_scale": [
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625
+      ],
+      "ctype": "DEFAULT",
+      "dorder": "DWH",
+      "dim_len": 4,
+      "dtype": "INT8",
+      "Dim": {
+        "size": [
+          9,
+          960,
+          544,
+          1
+        ],
+        "pitch": [
+          16,
+          960,
+          544,
+          1
+        ]
+      }
+    }
+  },
+  "activation": {
+    "size": 75972608
+  },
+  "weight": {
+    "size": 41477760
+  },
+  "task_num": 61,
+  "dag": {
+    "size": 6912
+  }
+}

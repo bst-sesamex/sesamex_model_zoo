@@ -1,0 +1,155 @@
+schema_version: 1
+release:
+  platform: aura-kalos
+  version: "1.0.0"
+  model_archive_root: in-repo  # weights committed under samples/vision/<sample>/model/ since 1.0.1 (decision D8)
+compatibility:
+  hardware: [Aura (C1200 chip), Kalos (A1000 chip)]
+  runtime: libbsnnrt 0.13.x
+  python_bindings: pybsnn 0.2.0+0.13.0 (aarch64, in-repo wheel)
+validation:
+  repository_wide_board_test: false
+  statement: >
+    This manifest inventories model assets and checksums. Board-specific
+    validation records are maintained separately from the algorithm source.
+models:
+- id: yolov8
+  sample_path: samples/vision/yolov8
+  download_script: samples/vision/yolov8/model/download.sh
+  assets:
+  - filename: yolov8n-det.Enrsd.bin
+    variant: yolov8n-det
+    task: det
+    format: bin
+    sha256: aff9876b15428246ad0de41bc4d5d315132b9e221e83d8e914df2b3e437a63eb
+  - filename: yolov8n-seg.Enrsd.bin
+    variant: yolov8n-seg
+    task: seg
+    format: bin
+    sha256: 4b0e69fbf39067bb2c184151f656d32a948a0e3b435e7931110905bf196834e4
+  - filename: yolov8n-pose.Enrsd.bin
+    variant: yolov8n-pose
+    task: pose
+    format: bin
+    sha256: 3c14d3a94a68c9e662fa6db3d7749e20f0359ba3186267004711a97cbc8fe56a
+- id: yolov12
+  sample_path: samples/vision/yolov12
+  download_script: samples/vision/yolov12/model/download.sh
+  assets:
+  - filename: yolov10n-det.Enrsd.bin
+    variant: yolov10n-det
+    task: det
+    format: bin
+    sha256: 88aed0f96fc074cfb1edf7dd7f404a33c3fb7a6047d2a500449e627e9349308e
+  - filename: yolov11n-det.Enrsd.bin
+    variant: yolov11n-det
+    task: det
+    format: bin
+    sha256: 942e1336b5627d5fef02ea926706c8c64d1d919155bee5693ca2b8e92e75ee88
+  - filename: yolov12n-det.Enrsd.bin
+    variant: yolov12n-det
+    task: det
+    format: bin
+    sha256: 5f32a3dd0f1a1aa2a17bac017345709510d240acd7d3d34a768c76301f2bceb5
+- id: yolov5
+  sample_path: samples/vision/yolov5
+  download_script: samples/vision/yolov5/model/download.sh
+  assets:
+  - filename: yolov5m.sdag.bin
+    variant: yolov5m
+    task: det
+    format: bin
+    sha256: 1a803864a56d9e375fc5b1c515f285eb5875df07db382f9f98ecd27b9f12d1b5
+- id: fcos
+  sample_path: samples/vision/fcos
+  download_script: samples/vision/fcos/model/download.sh
+  assets:
+  - filename: fcos.Enrsd.bin
+    variant: fcos
+    task: det
+    format: bin
+    sha256: 1b1ea605bea234bb16ca28716caaa7abbe153ef665fda7a59920d2bbd95399cc
+- id: classification
+  sample_path: samples/vision/classification
+  download_script: samples/vision/classification/model/download.sh
+  assets:
+  - filename: fcos.Enrsd.bin
+    variant: resnet18
+    task: cls
+    format: bin
+    sha256: 1438a740d6ee8ebacc16e8229d35a0fcba813a06080556747fabd3e0befdf90a
+  - filename: fcos.Enrsd.bin
+    variant: resnet34
+    task: cls
+    format: bin
+    sha256: 2e44277766714f74d776267302fd1510627d8c8979f440d0116aa1d3cbfcdb4d
+  - filename: fcos.Enrsd.bin
+    variant: mobilenetv2
+    task: cls
+    format: bin
+    sha256: 19328b06b3e5237e114d956a7a44826c18300b03d15d179aaecdd93ae667479a
+- id: condlanenet
+  sample_path: samples/vision/condlanenet
+  download_script: samples/vision/condlanenet/model/download.sh
+  assets:
+  - filename: condlanenet.sdag.bin
+    variant: condlanenet
+    task: lane
+    format: bin
+    sha256: a9f20983d8f8895253dc8057d0f2bd1d91647a6952e793aa85cb3180b6e24f62
+- id: openstereo2
+  sample_path: samples/vision/openstereo2
+  download_script: samples/vision/openstereo2/model/download.sh
+  assets:
+  - filename: lightstereo.sdag.bin
+    variant: lightstereo
+    task: stereo
+    format: bin
+    sha256: a94702cea1ef092a0def2fb8de8bdf2854999984e6cfc7ca5ba42aeaa43e3d75
+- id: landmark
+  sample_path: samples/vision/landmark
+  download_script: samples/vision/landmark/model/download.sh
+  assets:
+  - filename: landmark.Enrsd.bin
+    variant: size56
+    task: face-landmark
+    format: bin
+    sha256: cbf423619b0d6d05461567188eadd8eca455b0301bbe60e61ae8667a9d1ca905
+  - filename: landmark.Enrsd.bin  # size224 variant (per-variant directory)
+    variant: size224
+    task: face-landmark
+    format: bin
+    sha256: f4fbd549ca4903993e5fcf69e28530202aad76be4af9b742b2bcac247d62c386
+- id: reid
+  sample_path: samples/vision/reid
+  download_script: samples/vision/reid/model/download.sh
+  assets:
+  - filename: reid.Enrsd.bin
+    variant: mobilenetv2
+    task: reid
+    format: bin
+    sha256: e9ba47adbdece280d014bbe08d7d9aef50b48e01830a2a7e520340b40b8a64ed
+  - filename: reid.Enrsd.bin
+    variant: osnet
+    task: reid
+    format: bin
+    sha256: b1e3ad8ea693f75624184ecade519903a6749859fe78c745d3b84f336d53e63d
+  - filename: reid.Enrsd.bin
+    variant: resnet50
+    task: reid
+    format: bin
+    sha256: 0b0808c368d632d84e39320ee204ef75b1301e2363937463e42caa38c8ddded4
+- id: unet-seg
+  sample_path: samples/vision/unet-seg
+  download_script: samples/vision/unet-seg/model/download.sh
+  assets:
+  - filename: reid.Enrsd.bin
+    variant: unet_512x512
+    task: seg
+    format: bin
+    sha256: a0f6f99d96d56410f29deee01775645a27a24e1cd1153e59e039e5df54702fb3
+  - filename: reid.Enrsd.bin
+    variant: unet_512x1024
+    task: seg
+    format: bin
+    sha256: 933c00b5e4f9e510cbea7763fa9f34eea4da6521c017f991b495d5365d16f26d

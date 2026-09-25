@@ -1,0 +1,274 @@
+schema_version: 1
+source_repository: legacy bst_robot_model_zoo/sftp_upload/models
+description: Selected floating ONNX models and archived checkpoints. SHA-256 verifies
+  copied bytes; semantic checkpoint-to-ONNX equivalence is not asserted unless documented
+  in the source.
+models:
+- sample: classification
+  variant: resnet18
+  files:
+  - kind: onnx
+    path: samples/vision/classification/conversion/assets/resnet18/resnet18_cifar10.onnx
+    source_path: classification/train/compiler/resnet18_cifar10.onnx
+    bytes: 44720080
+    sha256: 22a24cff9c9c5391385a49a551e3ea748cab523217cbf619168e26cc771a7fad
+  checkpoint_status: not_present_in_source
+  checkpoint_relation: absent_in_archived_source
+- sample: classification
+  variant: resnet34
+  files:
+  - kind: onnx
+    path: samples/vision/classification/conversion/assets/resnet34/resnet34_cifar10.onnx
+    source_path: classification/train/compiler/resnet34_cifar10.onnx
+    bytes: 85148129
+    sha256: 49597c32c0af35c3bd322da0c2566c810fa1a725a2ec5fe6fc3da37a5cc7174b
+  checkpoint_status: not_present_in_source
+  checkpoint_relation: absent_in_archived_source
+- sample: classification
+  variant: mobilenetv2
+  files:
+  - kind: onnx
+    path: samples/vision/classification/conversion/assets/mobilenetv2/mobilenetv2_cifar10.onnx
+    source_path: classification/train/compiler/mobilenetv2_cifar10.onnx
+    bytes: 8916410
+    sha256: 0d4e42d23f12b15000c42a00fc3d8c24851b0b870f5c7341ea496bcbfe738a4d
+  checkpoint_status: not_present_in_source
+  checkpoint_relation: absent_in_archived_source
+- sample: condlanenet
+  variant: condlanenet
+  files:
+  - kind: onnx
+    path: samples/vision/condlanenet/conversion/assets/condlanenet/condlanenet.onnx
+    source_path: condlanenet/train/compiler/condlanenet.onnx
+    bytes: 52260892
+    sha256: 10ed35a03e1369bcab8986b2e1da976a9112b1869d04c47ddf37856a838e70a1
+  - kind: checkpoint
+    path: samples/vision/condlanenet/conversion/assets/condlanenet/bst_epoch_70.pth
+    source_path: condlanenet/train/ckpts/bst_epoch_70.pth
+    bytes: 155785545
+    sha256: 6893197237ac0d05038112bad2f2c505b2ffb9f1e8dc146745dd95bdd00d532a
+  checkpoint_relation: same_family_export_not_proven
+- sample: reid
+  variant: osnet
+  files:
+  - kind: onnx
+    path: samples/vision/reid/conversion/assets/osnet/osnet_x1_0_market_256x128_amsgrad_ep150_stp60_lr0.0015_b64_fb10_softmax_labelsmooth_flip.onnx
+    source_path: reid/train/ckpts/osnet_x1_0_market_256x128_amsgrad_ep150_stp60_lr0.0015_b64_fb10_softmax_labelsmooth_flip.onnx
+    bytes: 8757268
+    sha256: f4865ff1e93752eee87d87c349340e93640d1d232ed329941127ae968c096a0f
+  - kind: checkpoint
+    path: samples/vision/reid/conversion/assets/osnet/osnet_x1_0_market_256x128_amsgrad_ep150_stp60_lr0.0015_b64_fb10_softmax_labelsmooth_flip.pth
+    source_path: reid/train/ckpts/osnet_x1_0_market_256x128_amsgrad_ep150_stp60_lr0.0015_b64_fb10_softmax_labelsmooth_flip.pth
+    bytes: 10399605
+    sha256: 2809d3227f7d078f6045f7feb874a34d0684f0e0057b264b99adccf7d4519154
+  checkpoint_relation: documented_export_source
+- sample: reid
+  variant: mobilenetv2
+  files:
+  - kind: onnx
+    path: samples/vision/reid/conversion/assets/mobilenetv2/mobilenetv2_x1_0_1dot0_market.pth.onnx
+    source_path: reid/train/ckpts/mobilenetv2_x1_0_1dot0_market.pth.onnx
+    bytes: 8868274
+    sha256: 53358c8738d2d83db7849e2c5b6079caceb79d630979f3c7bd7cf06105de7fc2
+  - kind: checkpoint
+    path: samples/vision/reid/conversion/assets/mobilenetv2/mobilenetv2_x1_0_1dot0_market.pth.tar
+    source_path: reid/train/ckpts/mobilenetv2_x1_0_1dot0_market.pth.tar
+    bytes: 12941455
+    sha256: 6501d23b8e7f57bfd8bc3ad912ebf8afae81b52bce6b4b7918f62f2c7e4f425e
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: reid
+  variant: resnet50
+  files:
+  - kind: onnx
+    path: samples/vision/reid/conversion/assets/resnet50/resnet50_market_xent.pth.onnx
+    source_path: reid/train/ckpts/resnet50_market_xent.pth.onnx
+    bytes: 93957999
+    sha256: 8365a64957881dd4e2b328e403fbc0799069ba7958a18a90b34055c710f8e7f9
+  - kind: checkpoint
+    path: samples/vision/reid/conversion/assets/resnet50/resnet50_market_xent.pth.tar
+    source_path: reid/train/ckpts/resnet50_market_xent.pth.tar
+    bytes: 100438087
+    sha256: 15d3fab6912688516ed2c281961eaf7ee8590ff51dfd6f61ba64daba90325c31
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: unet-seg
+  variant: unet_512x512
+  files:
+  - kind: onnx
+    path: samples/vision/unet-seg/conversion/assets/unet_512x512/unet_cityscapes_512x512.onnx
+    source_path: unet-seg/train/bst_deploy/compiler/unet_cityscapes_512x512.onnx
+    bytes: 53568096
+    sha256: 0293542e2177f3268effcde5f094484b129eef7057ee09e251eeeab39bed0d27
+  - kind: checkpoint
+    path: samples/vision/unet-seg/conversion/assets/unet_512x512/model_491.pth
+    source_path: unet-seg/train/ckpts/model_491.pth
+    bytes: 59240971
+    sha256: 379325fc99dc303072b41737ece9ec7b8c9c7c347f1f664340e2a9fd380326ad
+  checkpoint_relation: documented_export_source
+- sample: unet-seg
+  variant: unet_512x1024
+  files:
+  - kind: onnx
+    path: samples/vision/unet-seg/conversion/assets/unet_512x1024/unet_cityscapes_512x1024.onnx
+    source_path: unet-seg/train/bst_deploy/compiler/unet_cityscapes_512x1024.onnx
+    bytes: 53568107
+    sha256: a85edfd107d12e69958e746bf676fc18e9304525c58367ddf06f393448c90801
+  - kind: checkpoint
+    path: samples/vision/unet-seg/conversion/assets/unet_512x1024/model_491.pth
+    source_path: unet-seg/train/ckpts/model_491.pth
+    bytes: 59240971
+    sha256: 379325fc99dc303072b41737ece9ec7b8c9c7c347f1f664340e2a9fd380326ad
+  checkpoint_relation: same_family_export_not_proven
+- sample: fcos
+  variant: fcos
+  files:
+  - kind: onnx
+    path: samples/vision/fcos/conversion/assets/fcos/fcos_r50_bst_896x896.onnx
+    source_path: FCOS/train/compiler/fcos_r50_bst_896x896.onnx
+    bytes: 204631008
+    sha256: a8fe99b7e7e4502147a8f4796d48847511d0e020d154bdfaecc2a5fff5e1e6ec
+  - kind: checkpoint
+    path: samples/vision/fcos/conversion/assets/fcos/fcos_r50_bst_896x896.pth
+    source_path: FCOS/train/bst_deploy/fcos_r50_bst_896x896.pth
+    bytes: 257672319
+    sha256: 0c659bf70b93755c94d9d3f4b8b30e1ef11a90f334e6cb20779f3d4db233794d
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: openstereo2
+  variant: lightstereo
+  files:
+  - kind: onnx
+    path: samples/vision/openstereo2/conversion/assets/lightstereo/checkpoint_epoch_299.onnx
+    source_path: OpenStereo-2/train/compiler/checkpoint_epoch_299.onnx
+    bytes: 83162881
+    sha256: eed9f7ace75a1932663edb49fbe8badabef31dfcb0aac3e257d858905f5043bb
+  - kind: checkpoint
+    path: samples/vision/openstereo2/conversion/assets/lightstereo/checkpoint_epoch_299.pth
+    source_path: OpenStereo-2/train/ckpts/checkpoint_epoch_299.pth
+    bytes: 249281678
+    sha256: e2a2b292b5937f4f3263a453f8298b1d8b6095517ff0c0a753e35765083a7ec2
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: yolov12
+  variant: yolov10n-det
+  files:
+  - kind: onnx
+    path: samples/vision/yolov12/conversion/assets/yolov10n-det/yolov10n-bst-relu6.onnx
+    source_path: yolov12/train/compiler/yolov10n-bst-relu6.onnx
+    bytes: 9278784
+    sha256: 006551f2336a01bfe46eda35789508e5858580ac78f916afae337d525505bcfb
+  - kind: checkpoint
+    path: samples/vision/yolov12/conversion/assets/yolov10n-det/yolov10n-bst-relu6.pt
+    source_path: yolov12/train/ckpts/yolov10n-bst-relu6.pt
+    bytes: 5867080
+    sha256: 13ac91394caec0e2ac3f3fd93110061023c42d2daa31f6ddf327dfbb768277f7
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: yolov12
+  variant: yolov11n-det
+  files:
+  - kind: onnx
+    path: samples/vision/yolov12/conversion/assets/yolov11n-det/yolo11n-bst-relu6.onnx
+    source_path: yolov12/train/compiler/yolo11n-bst-relu6.onnx
+    bytes: 10549138
+    sha256: 7430f095532a0d644a76dfa626d61ae555b6842452d00862b01354494948b6be
+  - kind: checkpoint
+    path: samples/vision/yolov12/conversion/assets/yolov11n-det/yolov11n-bst-relu6.pt
+    source_path: yolov12/train/ckpts/yolov11n-bst-relu6.pt
+    bytes: 5520360
+    sha256: c9966ae5b33e6cc9482376e47023695bdf631b4b93386a3ecf764826a0090695
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: yolov12
+  variant: yolov12n-det
+  files:
+  - kind: onnx
+    path: samples/vision/yolov12/conversion/assets/yolov12n-det/yolo12n-bst-relu6.onnx
+    source_path: yolov12/train/compiler/yolo12n-bst-relu6.onnx
+    bytes: 10533871
+    sha256: 37b765b16b0b4a9893f7a5f8db26646a77282409ae418daef0ad62c959331702
+  - kind: checkpoint
+    path: samples/vision/yolov12/conversion/assets/yolov12n-det/yolov12n-bst-relu6.pt
+    source_path: yolov12/train/ckpts/yolov12n-bst-relu6.pt
+    bytes: 5560168
+    sha256: fc1cf83cd150b80ff407dd3b54c647afc3bacc3d800eae1305d6bd83c3f5a7a6
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: landmark
+  variant: size56
+  files:
+  - kind: onnx
+    path: samples/vision/landmark/conversion/assets/size56/mobilenet_56_model_best_gdconv.onnx
+    source_path: landmark/train/bst_deploy/compiler/mobilenet_56_model_best_gdconv.onnx
+    bytes: 9595633
+    sha256: 0de686a2cd039f431a0d98136c23c9611cab95c2b6236a56d69b85e8d70dba8d
+  - kind: checkpoint
+    path: samples/vision/landmark/conversion/assets/size56/mobilenet_56_model_best_gdconv.pth.tar
+    source_path: landmark/train/bst_deploy/ckpts/mobilenet_56_model_best_gdconv.pth.tar
+    bytes: 34307746
+    sha256: b2106fe95836c9461edbbc347f185e6b467a00c5e0ba5b9fe5f862931248bcf7
+  checkpoint_relation: documented_export_source
+- sample: landmark
+  variant: size224
+  files:
+  - kind: onnx
+    path: samples/vision/landmark/conversion/assets/size224/mobilenet_224_model_best_gdconv.onnx
+    source_path: landmark/train/bst_deploy/compiler/mobilenet_224_model_best_gdconv.onnx
+    bytes: 9826035
+    sha256: 71f37920fc5b5fc68a481ca75e046c238293c3fab56ec78eaaae9b36c2fcce73
+  - kind: checkpoint
+    path: samples/vision/landmark/conversion/assets/size224/mobilenet_224_model_best_gdconv.pth.tar
+    source_path: landmark/train/bst_deploy/ckpts/mobilenet_224_model_best_gdconv.pth.tar
+    bytes: 34998946
+    sha256: 97daeb5dc1d308ebf7976200a19f51448d038815c1577fc58e6ca8675b55913b
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: yolov5
+  variant: yolov5m
+  files:
+  - kind: onnx
+    path: samples/vision/yolov5/conversion/assets/yolov5m/yolov5m_bst.onnx
+    source_path: yolov5/train/compiler/yolov5m_bst.onnx
+    bytes: 84730282
+    sha256: 90c533de5d503ba361b3052cd2925542606e27ba4639145db0d2c75574a3ee93
+  - kind: checkpoint
+    path: samples/vision/yolov5/conversion/assets/yolov5m/yolov5m_bst.pt
+    source_path: yolov5/train/ckpts/yolov5m_bst.pt
+    bytes: 42744489
+    sha256: 273b423b5afe91e0f4aca5e53625586d3319580d8b38b3206466bbe35a865f29
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: yolov8
+  variant: yolov8n-det
+  files:
+  - kind: onnx
+    path: samples/vision/yolov8/conversion/assets/yolov8n-det/yolov8n-det-bst.onnx
+    source_path: yolov8/train/compiler/yolov8n-det-bst.onnx
+    bytes: 12650863
+    sha256: 0e23b86dfdcb392c2038d50be263211fabcf226a57980e3c7ea13176d68d39c0
+  - kind: checkpoint
+    path: samples/vision/yolov8/conversion/assets/yolov8n-det/yolov8n-det-bst.pt
+    source_path: yolov8/train/ckpts/yolov8n-det-bst.pt
+    bytes: 6519726
+    sha256: ee2c554af1a976b2c750ae29475a30e43622e16c1847516f681fb6f53961e1f6
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: yolov8
+  variant: yolov8n-seg
+  files:
+  - kind: onnx
+    path: samples/vision/yolov8/conversion/assets/yolov8n-seg/yolov8n-seg-bst.onnx
+    source_path: yolov8/train/compiler/yolov8n-seg-bst.onnx
+    bytes: 13667587
+    sha256: 21fb74ae0b9f57eb42c6747e1017c91bfa872d599630926848eef99de18bda0b
+  - kind: checkpoint
+    path: samples/vision/yolov8/conversion/assets/yolov8n-seg/yolov8n-seg-bst.pt
+    source_path: yolov8/train/ckpts/yolov8n-seg-bst.pt
+    bytes: 7058168
+    sha256: ad13dd7e39588adb3d8d77edb09e17ccf6a528925b011fdc6e1b49a65fc1ce42
+  checkpoint_relation: matching_variant_name_export_not_proven
+- sample: yolov8
+  variant: yolov8n-pose
+  files:
+  - kind: onnx
+    path: samples/vision/yolov8/conversion/assets/yolov8n-pose/yolov8n-pose-bst.onnx
+    source_path: yolov8/train/compiler/yolov8n-pose-bst.onnx
+    bytes: 13207135
+    sha256: 97e40e4301fc0d173943f8a516b04eb38f4fc3464f2067e6b04e460ad0f1b477
+  - kind: checkpoint
+    path: samples/vision/yolov8/conversion/assets/yolov8n-pose/yolov8n-pose-bst.pt
+    source_path: yolov8/train/ckpts/yolov8n-pose-bst.pt
+    bytes: 13676731
+    sha256: 956bc020b262b5ab33d3d63db9d52d0d151abbfe769e1a206d6b8f578206089c
+  checkpoint_relation: matching_variant_name_export_not_proven

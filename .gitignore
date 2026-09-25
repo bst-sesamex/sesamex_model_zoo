@@ -1,0 +1,27 @@
+# build output
+build/
+__pycache__/
+*.pyc
+
+# runtime scratch
+output/
+calibration_data*/
+
+# large source models are committed only under curated conversion/assets paths via Git LFS
+*.onnx
+*.pth
+*.pt
+*.hbm
+!samples/vision/*/conversion/assets/*/*.onnx
+!samples/vision/*/conversion/assets/*/*.pth
+!samples/vision/*/conversion/assets/*/*.pth.tar
+!samples/vision/*/conversion/assets/*/*.pt
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# NOTE: quantized model packages (*.Enrsd.bin / weights.bin / *.meta /
+# *_stripped.lib) and the pybsnn wheel ARE committed to this repository
+# (in-repo weights; the former model-server download channel is retired).

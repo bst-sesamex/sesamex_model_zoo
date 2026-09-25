@@ -1,0 +1,32 @@
+# BSTNNX 8.3.1 image calibration example.
+# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/yolov12/train/compiler/c1200_yolov12n_det_relu6.yaml.
+# The ONNX is included under assets/. Supply representative calibration images and verify preprocessing.
+model_path: ./assets/yolov12n-det/yolo12n-bst-relu6.onnx
+model_name: yolov12n-det
+result_dir: ./output/yolov12n-det
+device_engine: C1200
+logging_level: INFO
+Quant:
+  inputs:
+  - name: images
+    data_reader_method: image_folder_data_reader
+    input_data_set_path: ./calibration_images/yolov12n-det
+    image_process_config:
+      source_image_format: BGR
+      target_image_format: RGB
+      mean:
+      - 0.0
+      - 0.0
+      - 0.0
+      scale:
+      - 0.00390625
+      - 0.00390625
+      - 0.00390625
+  size_limit: 50
+  accuracy_level: 1
+Backend:
+  net_batch_size: 1
+  partition:
+    partition_method: partition_greedy
+  emulation:
+    profiling_mode: 2
