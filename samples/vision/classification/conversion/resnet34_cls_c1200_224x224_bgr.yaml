@@ -1,7 +1,7 @@
 # BSTNNX 8.3.1 image calibration example.
-# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/classification/train/compiler/main.yaml.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
 # The ONNX is included under assets/. Supply representative calibration images and verify preprocessing.
-# Legacy classification YAML points to ResNet-34 but calls the model fcos; this example uses ResNet-34.
+# Classification example: ResNet-34 on CIFAR-10.
 model_path: ./assets/resnet34/resnet34_cifar10.onnx
 model_name: resnet34
 result_dir: ./output/resnet34

@@ -11,4 +11,4 @@ target_link_libraries(lightstereo ${OpenCV_LIBS} ${BSNN_LIB} ${BSRPC_LIB} pthrea
 target_link_opencv_sysroot_math(lightstereo)
 
 target_link_options(lightstereo PRIVATE $<$<CONFIG:Release>:-s>)
-install(TARGETS lightstereo DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../prebuild/app)
+install(TARGETS lightstereo DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/prebuild/app)

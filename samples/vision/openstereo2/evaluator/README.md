@@ -2,7 +2,6 @@ English | [简体中文](./README_cn.md)
 
 # OpenStereo-2（LightStereo） Evaluation
 
-
 Performance & accuracy reference for OpenStereo-2（LightStereo） on Aura / Kalos.
 
 ## 1. Prerequisites
@@ -11,7 +10,6 @@ Performance & accuracy reference for OpenStereo-2（LightStereo） on Aura / Kal
 - Python 3 + `pybsnn` (installed by repo-root `init_env.sh` on board)
 - For accuracy: Python 3.8+, `pycocotools` (detection family) or the
   dataset-specific evaluation tool
-- Models are committed in-repo under `../model/`; `../model/download.sh` verifies completeness.
 
 ## 2. Dataset
 
@@ -39,7 +37,7 @@ Conditions: Aura C1200, default auto engine; median of three post-warmup C++ run
 
 | Model | Input | Aura C1200 FPS | Aura latency |
 |---|---|---|---|
-| `lightstereo` | 960x544（双目） | 14.64 FPS | 68.291 ms |
+| `lightstereo` | 960x544（双目） | 4.59 FPS | 217.787 ms |
 
 ## 5. Accuracy Benchmark
 

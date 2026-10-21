@@ -10,6 +10,6 @@ target_link_libraries(unet-seg ${OpenCV_LIBS} ${BSNN_LIB} ${BSRPC_LIB} pthread s
 target_link_opencv_sysroot_math(unet-seg)
 
 target_link_options(unet-seg PRIVATE $<$<CONFIG:Release>:-s>)
-install(TARGETS unet-seg DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../prebuild/app)
+install(TARGETS unet-seg DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/prebuild/app)
 
 

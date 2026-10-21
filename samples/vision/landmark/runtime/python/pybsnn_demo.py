@@ -57,7 +57,7 @@ if __name__ == '__main__':
     model_dir = resolve_model_dir(
         base_dir,
         "size56",
-        legacy_candidates=(
+        extra_candidates=(
             "model/c1200/size56",
             "model/a1000/size56-a1000",
         ),

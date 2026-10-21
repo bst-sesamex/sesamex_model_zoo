@@ -27,7 +27,6 @@ void preprocess(const cv::Mat& src, cv::Mat& dst)
         return;
     }
 
-    // Scale ratio (new / old)
     double r = MIN(IMG_WIDTH / width, IMG_HEIGHT / height);
     
     int scale_width = (int)(std::round(width * r));
@@ -36,6 +35,7 @@ void preprocess(const cv::Mat& src, cv::Mat& dst)
     int dh = (IMG_HEIGHT - scale_height) / 2;
 
     cv::resize(src, dst, cv::Size(scale_width, scale_height), 0.0, 0.0, cv::INTER_LINEAR);
+    cv::cvtColor(dst, dst, cv::COLOR_BGR2RGB);
     int top = (int)(std::round(dh - 0.1));
     int bottom = (int)(std::round(dh + 0.1));
     int left = (int)(std::round(dw - 0.1));
@@ -656,9 +656,9 @@ void yolov8_postprocess(const BSNN_MODEL& model, std::vector<ObjInfo> &det_objs,
             auto det_scales = [&](int c) { return BSNN_MODEL::ScaleAt(det_scale_vec, c); };
 
             int8_t *kpt_base = (int8_t*)model.OutputVa(kpt_head_start + index);
-            float   kpt_scale = BSNN_MODEL::QuantScale(model.GetOutputAttrs()[kpt_head_start + index], 0); // per-tensor
+            std::vector<float> kpt_scale_vec = BSNN_MODEL::QuantScales(model.GetOutputAttrs()[kpt_head_start + index]);
+            auto kpt_scales = [&](int c) { return BSNN_MODEL::ScaleAt(kpt_scale_vec, c); };
 
-            // Pre-compute INT8 threshold for early rejection
             float cls_scale_ch = det_scales(reg_channels); // scale of the single cls channel
             float threshold_i8_f = conf_thresh_inverse / cls_scale_ch;
             int8_t threshold_i8 = (int8_t)std::max(-128.0f, std::min(127.0f, std::floor(threshold_i8_f)));
@@ -718,9 +718,9 @@ void yolov8_postprocess(const BSNN_MODEL& model, std::vector<ObjInfo> &det_objs,
                     int8_t* p_kpt = kpt_base + pixel_offset * kpt_pitch;
                     std::vector<float> kpts(kpt_channels);
                     for (int kp = 0; kp < 17; ++kp) {
-                        float raw_x = static_cast<float>(p_kpt[kp * 3 + 0]) * kpt_scale;
-                        float raw_y = static_cast<float>(p_kpt[kp * 3 + 1]) * kpt_scale;
-                        float raw_c = static_cast<float>(p_kpt[kp * 3 + 2]) * kpt_scale;
+                        float raw_x = static_cast<float>(p_kpt[kp * 3 + 0]) * kpt_scales(kp * 3 + 0);
+                        float raw_y = static_cast<float>(p_kpt[kp * 3 + 1]) * kpt_scales(kp * 3 + 1);
+                        float raw_c = static_cast<float>(p_kpt[kp * 3 + 2]) * kpt_scales(kp * 3 + 2);
                         kpts[kp * 3 + 0] = (raw_x * 2.0f + (anchor_x - 0.5f)) * stride;
                         kpts[kp * 3 + 1] = (raw_y * 2.0f + (anchor_y - 0.5f)) * stride;
                         kpts[kp * 3 + 2] = normal_sigmoid(raw_c);
@@ -926,15 +926,21 @@ bool build_proto(const BSNN_MODEL& model, int proto_idx, cv::Mat &proto, int &pr
     if (pitch < c) pitch = c;
 
     float scale = BSNN_MODEL::QuantScale(model.GetOutputAttrs()[proto_idx], 0);
-    int8_t *base = (int8_t*)model.OutputVa(proto_idx);
+    const uint8_t *base = (const uint8_t*)model.OutputVa(proto_idx);
+    const bool is_uint8 = proto_attr.dtype == BSNN_TENSOR_UINT8;
+    if (!is_uint8 && proto_attr.dtype != BSNN_TENSOR_INT8) {
+        std::cerr << "Unsupported proto tensor dtype: " << proto_attr.dtype << std::endl;
+        return false;
+    }
 
     proto = cv::Mat(c, proto_w * proto_h, CV_32F);
     for (int y = 0; y < proto_h; ++y) {
         for (int x = 0; x < proto_w; ++x) {
-            int8_t* p = base + (y * proto_w + x) * pitch;
+            const uint8_t* p = base + (y * proto_w + x) * pitch;
             int col = y * proto_w + x;
             for (int ch = 0; ch < c; ++ch) {
-                proto.at<float>(ch, col) = static_cast<float>(p[ch]) * scale;
+                int value = is_uint8 ? p[ch] : static_cast<int8_t>(p[ch]);
+                proto.at<float>(ch, col) = static_cast<float>(value) * scale;
             }
         }
     }

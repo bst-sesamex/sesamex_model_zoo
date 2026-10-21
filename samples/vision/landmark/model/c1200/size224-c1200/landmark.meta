@@ -1,9 +1,10 @@
 {
   "name": "landmark",
-  "comp_version": "7.1.0-63156d8c",
+  "comp_version": "8.3.1-de1720ad",
   "device": "C1200",
   "meta_fmt_ver": 0.5,
-  "net_fw_commitid": "1e095d5e",
+  "net_fw_commitid": "288cecf4",
+  "model_uid": 2344444225,
   "has_edp_gemm": "N",
   "dsp_op": "N",
   "net_batch_size": 1,
@@ -21,6 +22,7 @@
       ],
       "ctype": "RGB888P",
       "dorder": "WHD",
+      "dim_len": 4,
       "dtype": "UINT8",
       "Dim": {
         "size": [
@@ -48,11 +50,12 @@
       "children_tensor_ch_nums": [],
       "dequant_scale_num": 1,
       "dequant_scale": [
-        0.0078125
+        0.00390625
       ],
       "ctype": "DEFAULT",
       "dorder": "DWH",
-      "dtype": "INT8",
+      "dim_len": 2,
+      "dtype": "UINT8",
       "Dim": {
         "size": [
           136,
@@ -70,15 +73,13 @@
     }
   },
   "activation": {
-    "size": 40960
+    "size": 24576
   },
   "weight": {
     "size": 3964352
   },
   "task_num": 1,
   "dag": {
-    "size": 3712,
-    "num": 1
-  },
-  "model_uid": 2437156407
+    "size": 3584
+  }
 }

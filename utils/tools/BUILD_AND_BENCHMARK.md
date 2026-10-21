@@ -1,13 +1,12 @@
 # Model Zoo 板端构建与计时
 
-本仓库的模型文件和 C++ 示例以原工程
-`bst_robot_model_zoo_new_bsnn/bst_robot_model_zoo_new_bsnn` 为基准。本说明只定义通用构建与计时方法。
+本说明定义本仓库模型文件与 C++ 示例的通用构建与计时方法。
 
 ## 目录和入口
 
 - C++ 源码：`samples/vision/<sample>/runtime/cpp/src/`，可执行文件：同目录的 `prebuild/app/`。
 - Python 示例：`samples/vision/<sample>/runtime/python/pybsnn*.py`。
-- 模型文件：`samples/vision/<sample>/model/c1200/<variant>-c1200/`；保留原工程的 `.meta`、`*_stripped.lib` 或 `.sdag.bin` 文件名。
+- 模型文件：`samples/vision/<sample>/model/c1200/<variant>-c1200/`；模型包使用 `.meta`、`*_stripped.lib` 或 `.sdag.bin` 文件名。
 - 构建：`python3 utils/tools/build_all_models_native.py`（10 个 C++ 工程）。
 - C++ 汇总：`bash utils/tools/run_all_models_benchmark.sh --device C1200`。
 - Python 汇总：`bash utils/tools/run_all_pybsnn_benchmark.sh --device C1200`（12 个示例）。
@@ -15,7 +14,6 @@
 三个 Python 入口都支持 `--dry-run`，先用它核对将执行的路径。`build_all_models_native.py`
 设置 `MODEL_ZOO_HOST_NATIVE=1`，在每个 `runtime/cpp/build/` 做干净构建，并把新二进制安装到
 `runtime/cpp/prebuild/app/`。该动作会覆盖同名旧二进制；报告性能前必须确认构建日志中全部工程成功。
-模型包的 `model/download.sh` 仅检查文件在位，不能代替推理和精度验收。
 
 ## 统一计时口径
 
@@ -33,7 +31,6 @@
 cd /path/to/sesamex-model-zoo
 
 # 按样本校验模型包文件
-for d in samples/vision/*/model; do bash "$d/download.sh"; done
 
 # 编译 C++，然后执行 C++ 示例
 python3 utils/tools/build_all_models_native.py

@@ -1,9 +1,7 @@
 # FCOS Model Files
 
-The quantized model packages for the C1200 chip **are committed to this
-repository** under `model/c1200/<variant>-c1200/` (in-repo weights policy,
-since v1.0.1). No download step is required; the former model-server channel
-has been retired.
+The quantized model packages for the C1200 chip are committed to this
+repository under `model/c1200/<variant>-c1200/`.
 
 ## Default model
 
@@ -14,17 +12,13 @@ has been retired.
 | Model | Chip | Files |
 |---|---|---|
 | `fcos` | c1200 | weights.bin, fcos.Enrsd.bin, fcos.meta, fcos_stripped.lib |
-> **Kalos (A1000 chip)**: A1000 packages are not included in this release; the
-> A1000 layout is kept for compatibility and packages will be added when published.
+> **Kalos (A1000 chip)**: `model/a1000/<variant>-a1000/` packages ship with the repository, using the same four-file Enrsd layout.
 
 ## Verify
 
 ```bash
-./download.sh              # completeness check (all variants)
-./download.sh fcos       # one variant
 ```
 
-The script name is kept from the earlier download-based layout for
 compatibility; it only verifies file presence now.
 
 Layout:
@@ -52,3 +46,4 @@ Latency is the median of three post-warmup C++ run+wait calls measured with a bo
 | Variant | FPS | Latency |
 |---|---:|---:|
 | `fcos` | 50.79 | 19.689 ms |
+| `fcos` | a1000 | `fcos.meta`, `fcos.Enrsd.bin`, `fcos_stripped.lib`, `weights.bin` |

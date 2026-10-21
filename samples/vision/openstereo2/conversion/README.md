@@ -21,7 +21,7 @@ The ONNX and archived checkpoint are included under `assets/`; see the [asset ma
 
 ## Step 2: Calibration data
 
-Place representative, paired left and right images in the two folders named in the YAML. The `Quant.inputs` entries use the source project's RGB preprocessing.
+Place representative, paired left and right images in the two folders named in the YAML. The `Quant.inputs` entries define the calibration-time RGB preprocessing.
 
 ## Step 3: Quantized compile (bstnnx_run)
 
@@ -31,8 +31,6 @@ The [BSTNNX 8.3.1 example](./lightstereo_stereo_c1200_960x544_rgb.yaml) reads th
 cd samples/vision/openstereo2/conversion
 bstnnx_run --config lightstereo_stereo_c1200_960x544_rgb.yaml
 ```
-
-This is a conversion example, not a reproducible recipe for the committed quantized package. Check the exported ONNX input names, shapes, preprocessing and output protocol before compiling. Published packages may have been built with a different toolchain version. The generated files and layout depend on the compiler version. `../model/download.sh` checks that the committed package files exist; it performs no download.
 
 ## Output protocol
 

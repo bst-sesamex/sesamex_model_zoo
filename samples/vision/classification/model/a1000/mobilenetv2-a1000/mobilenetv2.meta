@@ -1,0 +1,85 @@
+{
+  "name": "mobilenetv2",
+  "comp_version": "8.3.1-de1720ad",
+  "device": "A1000B0",
+  "meta_fmt_ver": 0.5,
+  "net_fw_commitid": "288cecf4",
+  "model_uid": 1036670818,
+  "has_edp_gemm": "Y",
+  "dsp_op": "N",
+  "net_batch_size": 1,
+  "in_tensors": {
+    "num": 1,
+    "tensor_0": {
+      "name": "rf_000_DMA_IN_000_ts",
+      "tensor_name": "input",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        1.0
+      ],
+      "ctype": "RGB888P",
+      "dorder": "WHD",
+      "dim_len": 4,
+      "dtype": "UINT8",
+      "Dim": {
+        "size": [
+          224,
+          224,
+          3,
+          1
+        ],
+        "pitch": [
+          256,
+          224,
+          3,
+          1
+        ]
+      }
+    }
+  },
+  "out_tensors": {
+    "num": 1,
+    "tensor_0": {
+      "name": "ddr_rf_logits_ts",
+      "tensor_name": "logits",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        0.5
+      ],
+      "ctype": "DEFAULT",
+      "dorder": "DWH",
+      "dim_len": 2,
+      "dtype": "INT8",
+      "Dim": {
+        "size": [
+          10,
+          1,
+          1,
+          1
+        ],
+        "pitch": [
+          16,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "activation": {
+    "size": 94208
+  },
+  "weight": {
+    "size": 3313600
+  },
+  "task_num": 3,
+  "dag": {
+    "size": 3520
+  }
+}

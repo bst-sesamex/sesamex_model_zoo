@@ -1,0 +1,28 @@
+=== GRAPH FILE HEADER ===
+Magic: 0x47524150
+Version: 1
+Number of Nodes: 3
+Opening Count: 0x01
+Exiting Count: 0x01
+Size: 40
+=== NODE 0 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Children: [0]
+
+=== NODE 1 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Children: [255]
+
+=== NODE 2 ===
+  Curr ID: 0x000000ff
+  Prev Count: 0x00000001
+  Next Count: 0x00000000
+  Length: 8 bytes
+  Precedors: [0]
+

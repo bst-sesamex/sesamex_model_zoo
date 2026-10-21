@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-一键遍历 models/ 下各工程的 Deploy/prebuild 一键脚本（run_demo.sh、start_fcos_det.sh、start_condlanenet.sh、start_cls_infer.sh 等），运行推理并汇总帧率与耗时。
+一键遍历各 sample 的 `runtime/cpp/run_demo.sh`，运行推理并汇总帧率与耗时。
 
 BST 端侧 demo 可执行文件通常会打印:
   -> auto/top/lite engine inference FPS: <float>
@@ -133,30 +133,13 @@ def parse_demo_output(text: str, default_label: str) -> List[ParsedRun]:
 def discover_run_scripts(models_root: Path) -> List[Path]:
     """
     各工程约定的预编译一键脚本（名称不统一）：
-    - run_demo.sh：YOLO / OpenStereo 等
-    - start_fcos_det.sh：FCOS
-    - start_condlanenet.sh：CondLaneNet 车道线
-    - start_cls_infer.sh：分类 ResNet18/34、MobileNetV2
+    - run_demo.sh：全部 sample 统一入口
     """
     patterns = (
-        # new layout: scripts sit directly under <sample>/runtime/cpp/
         "**/runtime/cpp/run_demo.sh",
-        "**/runtime/cpp/start_fcos_det.sh",
-        "**/runtime/cpp/start_condlanenet.sh",
-        "**/runtime/cpp/start_cls_infer.sh",
-        # legacy layout kept for compatibility
         "**/runtime/cpp/prebuild/run_demo.sh",
         "**/Deploy/prebuild/run_demo.sh",
-        "**/runtime/cpp/prebuild/start_fcos_det.sh",
-        "**/Deploy/prebuild/start_fcos_det.sh",
-        "**/runtime/cpp/prebuild/start_condlanenet.sh",
-        "**/Deploy/prebuild/start_condlanenet.sh",
-        "**/runtime/cpp/prebuild/start_cls_infer.sh",
-        "**/Deploy/prebuild/start_cls_infer.sh",
         "**/Deploy/C++/prebuild/run_demo.sh",
-        "**/Deploy/C++/prebuild/start_fcos_det.sh",
-        "**/Deploy/C++/prebuild/start_condlanenet.sh",
-        "**/Deploy/C++/prebuild/start_cls_infer.sh",
     )
     candidates: List[Path] = []
     for pattern in patterns:
@@ -258,7 +241,7 @@ def run_shell(
 def optional_extra_jobs(models_root: Path) -> List[dict[str, Any]]:
     """
     无 Deploy/prebuild 一键脚本的工程：在依赖齐全时用 Python 等追加任务。
-    分类板端推理已由 start_cls_infer.sh 纳入默认扫描；此处仅保留 ONNX 全量精度验证（与 --include-extras 配合）。
+    分类板端推理已由 run_demo.sh 纳入默认扫描；此处仅保留 ONNX 全量精度验证（与 --include-extras 配合）。
     """
     jobs: List[dict[str, Any]] = []
 
@@ -364,7 +347,7 @@ def main() -> int:
     scripts = discover_run_scripts(models_root)
     if not scripts:
         print(
-            f"[WARN] No known Deploy/prebuild demo script (run_demo.sh / start_fcos_*.sh / start_condlanenet.sh / start_cls_infer.sh) under {models_root}",
+            f"[WARN] No run_demo.sh found under {models_root}",
             file=sys.stderr,
         )
 

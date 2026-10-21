@@ -16,27 +16,20 @@ class OpenStereo2Demo:
         chw = img_rgb.transpose(2, 0, 1)
         return np.ascontiguousarray(chw, dtype=np.uint8)
 
-    def softmax_axis2(self, x):
-        # Compute softmax for logits along the last axis
-        x_max = np.max(x, axis=2, keepdims=True)
-        e_x = np.exp(x - x_max)
-        return e_x / (np.sum(e_x, axis=2, keepdims=True) + 1e-12)
-
     def postprocess(self, raw_outputs):
         # IMPORTANT: The BSNN Python SDK automatically dequantizes the outputs.
         # Do not multiply by dequant_scale (0.0625) again logic.
+        #
+        # The current packages rebuilt with BSTNNX 8.3.1 output a single
+        # disparity tensor disp_pred [960,544,1,1]: the dual-softmax consensus
+        # was fused into the network during graph optimization, so the model
+        # directly emits the normalized disparity (the SDK dequantizes it to
+        # [0,1] regardless of the packed dtype).
+        # Multiply by max_disp to restore pixel disparity for the colormap.
         v0 = raw_outputs[0].astype(np.float32)
-        v1 = raw_outputs[1].astype(np.float32)
-        
-        # Apply Softmax to dequantized logits
-        s0 = self.softmax_axis2(v0)
-        s1 = self.softmax_axis2(v1)
-        
-        # Dot product consensus
-        dot = np.sum(s0 * s1, axis=2)
-        print(f"Dot Stats: min={dot.min():.4f}, max={dot.max():.4f}, mean={dot.mean():.4f}")
-        
-        disparity = dot * self.max_disp
+        print(f"Output Stats: min={v0.min():.4f}, max={v0.max():.4f}, mean={v0.mean():.4f}")
+
+        disparity = v0.reshape(self.input_size[1], self.input_size[0]) * self.max_disp
         return disparity
 
     def create_colormap(self, disparity):
@@ -109,7 +102,7 @@ if __name__ == '__main__':
         base_dir,
         "lightstereo",
         inner_model=True,
-        legacy_candidates=(
+        extra_candidates=(
             "main_c1200_OpenStereo-2/model",
             "model/c1200/lightstereo-c1200/model",
         ),

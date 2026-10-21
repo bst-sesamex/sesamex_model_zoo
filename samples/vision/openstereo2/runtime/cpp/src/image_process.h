@@ -22,11 +22,4 @@ void lightstereo_process_output(const BSNN_MODEL& model,
 // 视差图颜色映射
 cv::Mat create_disparity_colormap(const cv::Mat& disparity, float max_disp = 192.0f);
 
-// 软max函数
-void out_softmax(float* data, int depth, int width, int height);
-
-// 数据格式转换：WHD -> CHW
-template <typename T>
-void convert_whd_to_chw(const T* src, T* dst, int width, int height, int depth);
-
 #endif

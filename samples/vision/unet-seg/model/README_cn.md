@@ -1,11 +1,9 @@
 # UNet 模型文件
 
-C1200 模型文件按原工程 `models/unet-seg/Deploy/C++/prebuild/model/` 的对应模型包逐文件恢复，保留原始文件名。
+C1200 模型文件位于 `model/c1200/`，文件名与下方列表一致。
 
 - `unet_512x1024-c1200`：`reid.Enrsd.bin`, `reid.meta`, `reid_stripped.lib`, `weights.bin`
 - `unet_512x512-c1200`：`reid.Enrsd.bin`, `reid.meta`, `reid_stripped.lib`, `weights.bin`
-
-运行 `./download.sh` 检查所需文件是否在位。此检查仅验证包完整性，板端推理与精度需要另行验证。
 
 ## Aura C1200 推理性能
 
@@ -15,3 +13,5 @@ C1200 模型文件按原工程 `models/unet-seg/Deploy/C++/prebuild/model/` 的�
 |---|---:|---:|
 | `unet_512x1024` | 18.15 | 55.111 ms |
 | `unet_512x512` | 35.51 | 28.158 ms |
+| `unet_512x512` | a1000 | `unet_512x512.meta`、`unet_512x512.Enrsd.bin`、`unet_512x512_stripped.lib`、`weights.bin` |
+| `unet_512x1024` | a1000 | `unet_512x1024.meta`、`unet_512x1024.Enrsd.bin`、`unet_512x1024_stripped.lib`、`weights.bin` |

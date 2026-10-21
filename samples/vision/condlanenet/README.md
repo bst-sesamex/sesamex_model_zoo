@@ -3,7 +3,7 @@ English | [简体中文](./README_cn.md)
 # CondLaneNet
 
 Deployment sample of CondLaneNet for Black Sesame Aura / Kalos platforms:
-model conversion notes, model download, Python & C++ runtimes, and
+model conversion notes, model packages, Python & C++ runtimes, and
 evaluation references.
 
 ## Overview
@@ -28,7 +28,7 @@ Aura C1200 timing is the median of three post-warmup C++ run+wait calls measured
 .
 ├── conversion/                   # conversion notes (reference type)
 ├── evaluator/                    # accuracy / performance reference
-├── model/                        # model download script & file list
+├── model/                        # model packages & file list
 ├── runtime/python/               # PyBSNN Python runtime
 ├── runtime/cpp/                  # C++ runtime (source + build.sh)
 └── test_data/                    # input image + on-device output
@@ -37,15 +37,12 @@ Aura C1200 timing is the median of three post-warmup C++ run+wait calls measured
 ## Quick start
 
 ```bash
-# 1. model files are committed in-repo (optional completeness check)
-cd model && ./download.sh   # completeness check && cd ..
-
-# 2. Python runtime (on board; run repo-root init_env.sh first)
+# 1. Python runtime (on board; run repo-root init_env.sh first)
 cd runtime/python
 python3 pybsnn_demo.py
 
-# 3. C++ runtime (native build on board)
-cd runtime/cpp && bash build.sh
+# 2. C++ runtime (native build on board)
+cd runtime/cpp && bash build.sh && sh run_demo.sh
 ```
 
 See [evaluator/README.md](./evaluator/README.md) for benchmark & accuracy notes.

@@ -90,7 +90,7 @@ if __name__ == "__main__":
     sys.path.insert(0, os.path.normpath(os.path.join(base_dir, "../../../../../utils/py_utils/deploy")))
     from pybsnn_paths import resolve_model_dir, resolve_prebuild_asset
 
-    model_dir = resolve_model_dir(base_dir, "mobilenetv2", legacy_candidates=("model/mobilenetv2",))
+    model_dir = resolve_model_dir(base_dir, "mobilenetv2", extra_candidates=("model/mobilenetv2",))
     image_path = resolve_prebuild_asset(base_dir, "-1_c1s1_001351_04.jpg")
 
     demo = ReIDDemo(model_dir)

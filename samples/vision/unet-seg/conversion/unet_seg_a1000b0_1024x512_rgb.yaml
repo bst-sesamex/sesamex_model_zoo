@@ -1,0 +1,33 @@
+# BSTNNX 8.3.1 image calibration example.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
+# ONNX is included in assets/; supply representative calibration images.
+# The archived YAML is shared across this model family; verify preprocessing for this variant before accuracy claims.
+model_path: ./assets/unet_512x1024/unet_cityscapes_512x1024.onnx
+model_name: unet_512x1024
+result_dir: ./output/unet_512x1024
+device_engine: A1000B0
+logging_level: INFO
+Quant:
+  inputs:
+  - name: input
+    data_reader_method: image_folder_data_reader
+    input_data_set_path: ./calibration_images/unet_512x1024
+    image_process_config:
+      source_image_format: BGR
+      target_image_format: RGB
+      mean:
+      - 72.3924
+      - 82.90902
+      - 73.158325
+      scale:
+      - 1.0
+      - 1.0
+      - 1.0
+  size_limit: 50
+  accuracy_level: 1
+Backend:
+  net_batch_size: 1
+  partition:
+    partition_method: partition_greedy
+  emulation:
+    profiling_mode: 2

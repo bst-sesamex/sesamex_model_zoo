@@ -130,7 +130,7 @@ if __name__ == '__main__':
         base_dir,
         "condlanenet",
         inner_model=True,
-        legacy_candidates=("condlanenet_model_v1/model", "model/c1200/condlanenet-c1200/model"),
+        extra_candidates=("condlanenet_model_v1/model", "model/c1200/condlanenet-c1200/model"),
     )
     image_path = resolve_prebuild_asset(base_dir, "0352_19.jpg")
     

@@ -1,0 +1,103 @@
+{
+  "name": "unet_512x512",
+  "comp_version": "8.3.1-de1720ad",
+  "device": "A1000B0",
+  "meta_fmt_ver": 0.5,
+  "net_fw_commitid": "288cecf4",
+  "model_uid": 908201409,
+  "has_edp_gemm": "N",
+  "dsp_op": "Y",
+  "net_batch_size": 1,
+  "in_tensors": {
+    "num": 1,
+    "tensor_0": {
+      "name": "rf_000_DMA_IN_000_ts",
+      "tensor_name": "input",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 1,
+      "dequant_scale": [
+        1.0
+      ],
+      "ctype": "RGB888P",
+      "dorder": "WHD",
+      "dim_len": 4,
+      "dtype": "UINT8",
+      "Dim": {
+        "size": [
+          512,
+          512,
+          3,
+          1
+        ],
+        "pitch": [
+          512,
+          512,
+          3,
+          1
+        ]
+      }
+    }
+  },
+  "out_tensors": {
+    "num": 1,
+    "tensor_0": {
+      "name": "rf_016_CONV_004_ts",
+      "tensor_name": "output",
+      "merged_from_children": false,
+      "children_tensors": [],
+      "children_tensor_ch_nums": [],
+      "dequant_scale_num": 19,
+      "dequant_scale": [
+        0.03125,
+        0.03125,
+        0.03125,
+        0.03125,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.03125,
+        0.03125,
+        0.0625,
+        0.0625,
+        0.0625,
+        0.125
+      ],
+      "ctype": "DEFAULT",
+      "dorder": "DWH",
+      "dim_len": 4,
+      "dtype": "INT8",
+      "Dim": {
+        "size": [
+          19,
+          512,
+          512,
+          1
+        ],
+        "pitch": [
+          32,
+          512,
+          512,
+          1
+        ]
+      }
+    }
+  },
+  "activation": {
+    "size": 67108864
+  },
+  "weight": {
+    "size": 12936128
+  },
+  "task_num": 9,
+  "dag": {
+    "size": 2048
+  }
+}

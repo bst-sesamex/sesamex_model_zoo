@@ -9,4 +9,4 @@ target_link_libraries(yolov5 ${OpenCV_LIBS} ${BSNN_LIB} ${BSRPC_LIB} pthread std
 target_link_opencv_sysroot_math(yolov5)
 
 target_link_options(yolov5 PRIVATE $<$<CONFIG:Release>:-s>)
-install(TARGETS yolov5 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../prebuild/app)
+install(TARGETS yolov5 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/prebuild/app)

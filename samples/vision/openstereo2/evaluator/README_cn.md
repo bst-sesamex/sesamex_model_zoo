@@ -2,7 +2,6 @@
 
 # OpenStereo-2（LightStereo） 模型评测
 
-
 本目录记录 OpenStereo-2（LightStereo） 在 Aura / Kalos 平台上的性能与精度口径。
 
 ## 1. 评测前提
@@ -10,7 +9,6 @@
 - 板端：Aura（C1200 芯片）或 Kalos（A1000 芯片），系统已含 `libbsnnrt.so`
 - Python 3 + `pybsnn`（板端执行仓库根 `init_env.sh` 自动安装）
 - 精度评测需：Python 3.8+、`pycocotools`（检测类）或对应数据集评测工具
-- 模型已随仓库发布于 `../model/`；`../model/download.sh` 做完整性校验。
 
 ## 2. 数据集说明
 
@@ -38,7 +36,7 @@ bash utils/tools/run_all_models_benchmark.sh --device C1200
 
 | 模型 | 输入 | Aura C1200 FPS | Aura 耗时 |
 |---|---|---|---|
-| `lightstereo` | 960x544（双目） | 14.64 FPS | 68.291 ms |
+| `lightstereo` | 960x544（双目） | 4.59 FPS | 217.787 ms |
 
 ## 5. 精度 Benchmark
 

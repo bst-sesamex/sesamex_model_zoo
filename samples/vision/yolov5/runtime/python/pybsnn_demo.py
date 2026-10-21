@@ -112,7 +112,7 @@ if __name__ == '__main__':
         base_dir,
         "yolov5m",
         inner_model=True,
-        legacy_candidates=("yolov5_c1200/model", "model/c1200/yolov5m-c1200/model"),
+        extra_candidates=("yolov5_c1200/model", "model/c1200/yolov5m-c1200/model"),
     )
     image_path = resolve_prebuild_asset(base_dir, "139.jpg")
     demo = YOLOv5Demo(model_dir)

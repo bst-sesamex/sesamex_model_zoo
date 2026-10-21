@@ -1,0 +1,32 @@
+# BSTNNX 8.3.1 image calibration example.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
+# ONNX is included in assets/; supply representative calibration images.
+model_path: ./assets/yolov10n-det/yolov10n-bst-relu6.onnx
+model_name: yolov10n-det
+result_dir: ./output/yolov10n-det
+device_engine: A1000B0
+logging_level: INFO
+Quant:
+  inputs:
+  - name: images
+    data_reader_method: image_folder_data_reader
+    input_data_set_path: ./calibration_images/yolov10n-det
+    image_process_config:
+      source_image_format: BGR
+      target_image_format: RGB
+      mean:
+      - 0.0
+      - 0.0
+      - 0.0
+      scale:
+      - 0.00390625
+      - 0.00390625
+      - 0.00390625
+  size_limit: 50
+  accuracy_level: 1
+Backend:
+  net_batch_size: 1
+  partition:
+    partition_method: partition_greedy
+  emulation:
+    profiling_mode: 2

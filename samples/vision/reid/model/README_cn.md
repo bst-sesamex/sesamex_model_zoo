@@ -1,12 +1,10 @@
 # ReID 模型文件
 
-C1200 模型文件按原工程 `models/reid/Deploy/C++/prebuild/model/` 的对应模型包逐文件恢复，保留原始文件名。
+C1200 模型文件位于 `model/c1200/`，文件名与下方列表一致。
 
 - `mobilenetv2-c1200`：`reid.Enrsd.bin`, `reid.meta`, `reid_stripped.lib`, `weights.bin`
 - `osnet-c1200`：`reid.Enrsd.bin`, `reid.meta`, `reid_stripped.lib`, `weights.bin`
 - `resnet50-c1200`：`reid.Enrsd.bin`, `reid.meta`, `reid_stripped.lib`, `weights.bin`
-
-运行 `./download.sh` 检查所需文件是否在位。此检查仅验证包完整性，板端推理与精度需要另行验证。
 
 ## Aura C1200 推理性能
 
@@ -17,3 +15,6 @@ C1200 模型文件按原工程 `models/reid/Deploy/C++/prebuild/model/` 的对�
 | `mobilenetv2` | 1785.71 | 0.560 ms |
 | `osnet` | 203.52 | 4.9135 ms |
 | `resnet50` | 469.04 | 2.132 ms |
+| `mobilenetv2` | a1000 | `mobilenetv2.meta`、`mobilenetv2.Enrsd.bin`、`mobilenetv2_stripped.lib`、`weights.bin` |
+| `osnet` | a1000 | `osnet.meta`、`osnet.Enrsd.bin`、`osnet_stripped.lib`、`weights.bin` |
+| `resnet50` | a1000 | `resnet50.meta`、`resnet50.Enrsd.bin`、`resnet50_stripped.lib`、`weights.bin` |

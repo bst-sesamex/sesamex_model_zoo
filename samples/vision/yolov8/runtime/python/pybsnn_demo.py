@@ -39,15 +39,15 @@ class YOLOv8Demo:
         return np.ascontiguousarray(img_rgb.transpose(2, 0, 1), dtype=np.uint8)
 
     def postprocess(self, raw_outputs):
-        # Supports legacy paired outputs [reg8, cls8, reg16, cls16, reg32, cls32]
+        # Supports paired outputs [reg8, cls8, reg16, cls16, reg32, cls32]
         all_boxes = []
         all_scores = []
         all_class_ids = []
 
-        is_legacy = len(raw_outputs) == 6
+        is_paired = len(raw_outputs) == 6
         
         for i in range(len(self.strides)):
-            if is_legacy:
+            if is_paired:
                 reg = raw_outputs[i * 2]
                 cls = raw_outputs[i * 2 + 1]
             else:

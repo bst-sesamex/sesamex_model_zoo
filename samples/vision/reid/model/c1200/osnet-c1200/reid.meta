@@ -1,9 +1,10 @@
 {
   "name": "reid",
-  "comp_version": "7.1.0-63156d8c",
+  "comp_version": "8.3.1-de1720ad",
   "device": "C1200",
   "meta_fmt_ver": 0.5,
-  "net_fw_commitid": "1e095d5e",
+  "net_fw_commitid": "288cecf4",
+  "model_uid": 1857849391,
   "has_edp_gemm": "Y",
   "dsp_op": "N",
   "net_batch_size": 1,
@@ -21,6 +22,7 @@
       ],
       "ctype": "RGB888P",
       "dorder": "WHD",
+      "dim_len": 4,
       "dtype": "UINT8",
       "Dim": {
         "size": [
@@ -52,6 +54,7 @@
       ],
       "ctype": "DEFAULT",
       "dorder": "DWH",
+      "dim_len": 2,
       "dtype": "UINT8",
       "Dim": {
         "size": [
@@ -70,15 +73,13 @@
     }
   },
   "activation": {
-    "size": 6098944
+    "size": 6107136
   },
   "weight": {
-    "size": 3155712
+    "size": 3165952
   },
   "task_num": 93,
   "dag": {
-    "size": 1600,
-    "num": 1
-  },
-  "model_uid": 243408320
+    "size": 1600
+  }
 }

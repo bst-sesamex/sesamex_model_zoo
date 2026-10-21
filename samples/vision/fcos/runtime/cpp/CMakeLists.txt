@@ -9,5 +9,5 @@ target_link_libraries(fcos-det ${OpenCV_LIBS} ${BSNN_LIB} ${BSRPC_LIB} pthread s
 target_link_opencv_sysroot_math(fcos-det)
 
 target_link_options(fcos-det PRIVATE $<$<CONFIG:Release>:-s>)
-install(TARGETS fcos-det DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../prebuild/app)
+install(TARGETS fcos-det DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/prebuild/app)
 

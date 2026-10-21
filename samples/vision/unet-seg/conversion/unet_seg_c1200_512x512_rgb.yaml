@@ -1,7 +1,7 @@
 # BSTNNX 8.3.1 image calibration example.
-# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/unet-seg/train/bst_deploy/compiler/main.yaml.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
 # The ONNX is included under assets/. Supply representative calibration images and verify preprocessing.
-# Legacy segmentation YAML has stale reid.onnx/model_name entries; only its image preprocessing is reused.
+# Segmentation preprocessing parameters below: verify model_name matches the selected ONNX before compiling.
 model_path: ./assets/unet_512x512/unet_cityscapes_512x512.onnx
 model_name: unet_512x512
 result_dir: ./output/unet_512x512

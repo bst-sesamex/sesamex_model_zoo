@@ -23,7 +23,7 @@ Only ONNX files are available for the three classification variants; the source 
 
 ## Step 2: Calibration data
 
-Place representative calibration images in the folder named in the YAML. `Quant.inputs` uses the source project's image color conversion, mean and scale.
+Place representative calibration images in the folder named in the YAML. `Quant.inputs` defines the image color conversion, mean and scale used at calibration time.
 
 The archived ResNet-34 compiler YAML uses CIFAR-10 calibration and mistakenly sets `model_name: fcos`; this example corrects the name.
 
@@ -36,8 +36,6 @@ cd samples/vision/classification/conversion
 bstnnx_run --config resnet34_cls_c1200_224x224_bgr.yaml
 ```
 
-This is a conversion example, not a reproducible recipe for the committed quantized package. Check the exported ONNX input names, shapes, preprocessing and output protocol before compiling. Published packages may have been built with a different toolchain version. The generated files and layout depend on the compiler version. `../model/download.sh` checks that the committed package files exist; it performs no download.
-
 ## Variant examples
 
 - `resnet18`: [resnet18_cls_c1200_224x224_bgr.yaml](./resnet18_cls_c1200_224x224_bgr.yaml)
@@ -46,6 +44,6 @@ This is a conversion example, not a reproducible recipe for the committed quanti
 
 ## Output protocol
 
-CIFAR-10 10 类 logits（后处理 softmax 取 Top-K）；已发布模型包的输出维度为 10。分类模型定义脚本见原工程 `models/classification/train/`。
+CIFAR-10 10 类 logits（后处理 softmax 取 Top-K）；已发布模型包的输出维度为 10。分类模型结构以本仓库 `conversion/assets/` 下的 ONNX 为准。
 
 See runtime/python/pybsnn_demo.py for the authoritative parsing.

@@ -1,0 +1,60 @@
+=== GRAPH FILE HEADER ===
+Magic: 0x47524150
+Version: 1
+Number of Nodes: 7
+Opening Count: 0x01
+Exiting Count: 0x01
+Size: 72
+=== NODE 0 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Children: [0]
+
+=== NODE 1 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Children: [1]
+
+=== NODE 2 ===
+  Curr ID: 0x00000001
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [0]
+  Children: [2]
+
+=== NODE 3 ===
+  Curr ID: 0x00000002
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [1]
+  Children: [3]
+
+=== NODE 4 ===
+  Curr ID: 0x00000003
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [2]
+  Children: [4]
+
+=== NODE 5 ===
+  Curr ID: 0x00000004
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [3]
+  Children: [255]
+
+=== NODE 6 ===
+  Curr ID: 0x000000ff
+  Prev Count: 0x00000001
+  Next Count: 0x00000000
+  Length: 8 bytes
+  Precedors: [4]
+

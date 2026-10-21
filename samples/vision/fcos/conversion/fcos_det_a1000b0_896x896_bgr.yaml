@@ -1,0 +1,32 @@
+# BSTNNX 8.3.1 image calibration example.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
+# The ONNX is included under assets/. Supply representative calibration images and verify preprocessing.
+model_path: ./assets/fcos/fcos_r50_bst_896x896.onnx
+model_name: fcos
+result_dir: ./output/fcos
+device_engine: A1000B0
+logging_level: INFO
+Quant:
+  inputs:
+  - name: input_image
+    data_reader_method: image_folder_data_reader
+    input_data_set_path: ./calibration_images/fcos
+    image_process_config:
+      source_image_format: BGR
+      target_image_format: BGR
+      mean:
+      - 102.9801
+      - 115.9465
+      - 122.7717
+      scale:
+      - 1.0
+      - 1.0
+      - 1.0
+  size_limit: 50
+  accuracy_level: 1
+Backend:
+  net_batch_size: 1
+  partition:
+    partition_method: partition_greedy
+  emulation:
+    profiling_mode: 2

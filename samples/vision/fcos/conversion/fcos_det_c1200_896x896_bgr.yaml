@@ -1,5 +1,5 @@
 # BSTNNX 8.3.1 image calibration example.
-# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/FCOS/train/compiler/c1200_fcos.yaml.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
 # The ONNX is included under assets/. Supply representative calibration images and verify preprocessing.
 model_path: ./assets/fcos/fcos_r50_bst_896x896.onnx
 model_name: fcos

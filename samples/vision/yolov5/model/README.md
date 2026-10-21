@@ -1,10 +1,8 @@
 # YOLOv5 model files
 
-C1200 model files are copied byte for byte from the corresponding `models/yolov5/Deploy/C++/prebuild/model/` package in the source project. The runtime file names are kept exactly as published.
+C1200 model files are committed under `model/c1200/` with the runtime file names listed below.
 
 - `yolov5m-c1200`: `weights.bin`, `yolov5m.ModelGraph.bin`, `yolov5m.ModelGraph.bin.txt`, `yolov5m.meta`, `yolov5m.sdag.bin`
-
-Run `./download.sh` to check that every required file is present. This checks package completeness; board inference and accuracy require separate validation.
 
 ## Aura C1200 inference performance
 
@@ -13,3 +11,4 @@ Latency is the median of three post-warmup C++ run+wait calls measured with a bo
 | Variant | FPS | Latency |
 |---|---:|---:|
 | `yolov5m` | 145.84 | 6.857 ms |
+| `yolov5m` | a1000 | `yolov5m.meta`, `yolov5m.Enrsd.bin`, `yolov5m_stripped.lib`, `weights.bin` |

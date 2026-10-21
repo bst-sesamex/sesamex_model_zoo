@@ -1,0 +1,33 @@
+# BSTNNX 8.3.1 image calibration example.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
+# ONNX is included in assets/; supply representative calibration images.
+# The archived YAML is shared across this model family; verify preprocessing for this variant before accuracy claims.
+model_path: ./assets/resnet18/resnet18_cifar10.onnx
+model_name: resnet18
+result_dir: ./output/resnet18
+device_engine: A1000B0
+logging_level: INFO
+Quant:
+  inputs:
+  - name: input
+    data_reader_method: image_folder_data_reader
+    input_data_set_path: ./calibration_images/resnet18
+    image_process_config:
+      source_image_format: BGR
+      target_image_format: BGR
+      mean:
+      - 125.307
+      - 123.011
+      - 113.8575
+      scale:
+      - 0.019287109375
+      - 0.019775390625
+      - 0.01953125
+  size_limit: 50
+  accuracy_level: 1
+Backend:
+  net_batch_size: 1
+  partition:
+    partition_method: partition_greedy
+  emulation:
+    profiling_mode: 2

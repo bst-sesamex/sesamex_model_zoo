@@ -1,0 +1,276 @@
+=== GRAPH FILE HEADER ===
+Magic: 0x47524150
+Version: 1
+Number of Nodes: 34
+Opening Count: 0x01
+Exiting Count: 0x03
+Size: 288
+=== NODE 0 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Children: [0]
+
+=== NODE 1 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000002
+  Length: 8 bytes
+  Children: [1, 24]
+
+=== NODE 2 ===
+  Curr ID: 0x00000001
+  Prev Count: 0x00000001
+  Next Count: 0x00000002
+  Length: 8 bytes
+  Precedors: [0]
+  Children: [2, 12]
+
+=== NODE 3 ===
+  Curr ID: 0x00000002
+  Prev Count: 0x00000001
+  Next Count: 0x00000003
+  Length: 8 bytes
+  Precedors: [1]
+  Children: [3, 4, 9]
+
+=== NODE 4 ===
+  Curr ID: 0x00000003
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [2]
+  Children: [6]
+
+=== NODE 5 ===
+  Curr ID: 0x00000004
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [2]
+  Children: [5]
+
+=== NODE 6 ===
+  Curr ID: 0x00000005
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [4]
+  Children: [6]
+
+=== NODE 7 ===
+  Curr ID: 0x00000006
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [3, 5]
+  Children: [7]
+
+=== NODE 8 ===
+  Curr ID: 0x00000007
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [6]
+  Children: [8]
+
+=== NODE 9 ===
+  Curr ID: 0x00000008
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [7]
+  Children: [11]
+
+=== NODE 10 ===
+  Curr ID: 0x00000009
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [2]
+  Children: [10]
+
+=== NODE 11 ===
+  Curr ID: 0x0000000a
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [9]
+  Children: [11]
+
+=== NODE 12 ===
+  Curr ID: 0x0000000b
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [8, 10]
+  Children: [12]
+
+=== NODE 13 ===
+  Curr ID: 0x0000000c
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [1, 11]
+  Children: [13]
+
+=== NODE 14 ===
+  Curr ID: 0x0000000d
+  Prev Count: 0x00000001
+  Next Count: 0x00000002
+  Length: 8 bytes
+  Precedors: [12]
+  Children: [14, 24]
+
+=== NODE 15 ===
+  Curr ID: 0x0000000e
+  Prev Count: 0x00000001
+  Next Count: 0x00000003
+  Length: 8 bytes
+  Precedors: [13]
+  Children: [15, 16, 21]
+
+=== NODE 16 ===
+  Curr ID: 0x0000000f
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [14]
+  Children: [18]
+
+=== NODE 17 ===
+  Curr ID: 0x00000010
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [14]
+  Children: [17]
+
+=== NODE 18 ===
+  Curr ID: 0x00000011
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [16]
+  Children: [18]
+
+=== NODE 19 ===
+  Curr ID: 0x00000012
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [15, 17]
+  Children: [19]
+
+=== NODE 20 ===
+  Curr ID: 0x00000013
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [18]
+  Children: [20]
+
+=== NODE 21 ===
+  Curr ID: 0x00000014
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [19]
+  Children: [23]
+
+=== NODE 22 ===
+  Curr ID: 0x00000015
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [14]
+  Children: [22]
+
+=== NODE 23 ===
+  Curr ID: 0x00000016
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [21]
+  Children: [23]
+
+=== NODE 24 ===
+  Curr ID: 0x00000017
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [22, 20]
+  Children: [24]
+
+=== NODE 25 ===
+  Curr ID: 0x00000018
+  Prev Count: 0x00000003
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [0, 23, 13]
+  Children: [25]
+
+=== NODE 26 ===
+  Curr ID: 0x00000019
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [24]
+  Children: [26]
+
+=== NODE 27 ===
+  Curr ID: 0x0000001a
+  Prev Count: 0x00000001
+  Next Count: 0x00000003
+  Length: 8 bytes
+  Precedors: [25]
+  Children: [27, 30, 255]
+
+=== NODE 28 ===
+  Curr ID: 0x0000001b
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [26]
+  Children: [28]
+
+=== NODE 29 ===
+  Curr ID: 0x0000001c
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [27]
+  Children: [29]
+
+=== NODE 30 ===
+  Curr ID: 0x0000001d
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [28]
+  Children: [255]
+
+=== NODE 31 ===
+  Curr ID: 0x0000001e
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [26]
+  Children: [31]
+
+=== NODE 32 ===
+  Curr ID: 0x0000001f
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [30]
+  Children: [255]
+
+=== NODE 33 ===
+  Curr ID: 0x000000ff
+  Prev Count: 0x00000003
+  Next Count: 0x00000000
+  Length: 8 bytes
+  Precedors: [26, 29, 31]
+

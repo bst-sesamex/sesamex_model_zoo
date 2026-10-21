@@ -56,7 +56,7 @@ if __name__ == '__main__':
     sys.path.insert(0, os.path.normpath(os.path.join(base_dir, "../../../../../utils/py_utils/deploy")))
     from pybsnn_paths import resolve_model_dir, resolve_prebuild_asset
 
-    model_dir = resolve_model_dir(base_dir, "resnet34", legacy_candidates=("model/resnet34-c1200",))
+    model_dir = resolve_model_dir(base_dir, "resnet34", extra_candidates=("model/resnet34-c1200",))
     image_path = resolve_prebuild_asset(base_dir, "bird_303.png")
     if not os.path.exists(image_path):
         image_path = "./input.png"

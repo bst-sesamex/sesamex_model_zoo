@@ -1,0 +1,33 @@
+# BSTNNX 8.3.1 image calibration example.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
+# ONNX is included in assets/; supply representative calibration images.
+# The archived YAML is shared across this model family; verify preprocessing for this variant before accuracy claims.
+model_path: ./assets/size224/mobilenet_224_model_best_gdconv.onnx
+model_name: landmark
+result_dir: ./output/size224
+device_engine: A1000B0
+logging_level: INFO
+Quant:
+  inputs:
+  - name: input
+    data_reader_method: image_folder_data_reader
+    input_data_set_path: ./calibration_images/size224
+    image_process_config:
+      source_image_format: BGR
+      target_image_format: RGB
+      mean:
+      - 123.675
+      - 116.28
+      - 103.53
+      scale:
+      - 0.01708984375
+      - 0.017578125
+      - 0.017333984375
+  size_limit: 50
+  accuracy_level: 1
+Backend:
+  net_batch_size: 1
+  partition:
+    partition_method: partition_greedy
+  emulation:
+    profiling_mode: 2

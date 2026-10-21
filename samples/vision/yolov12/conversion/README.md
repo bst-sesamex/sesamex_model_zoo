@@ -23,7 +23,7 @@ The ONNX and archived checkpoint are included under `assets/`; see the [asset ma
 
 ## Step 2: Calibration data
 
-Place representative calibration images in the folder named in the YAML. `Quant.inputs` uses the source project's image color conversion, mean and scale.
+Place representative calibration images in the folder named in the YAML. `Quant.inputs` defines the image color conversion, mean and scale used at calibration time.
 
 ## Step 3: Quantized compile (bstnnx_run)
 
@@ -33,8 +33,6 @@ The [BSTNNX 8.3.1 example](./yolov12n-det_det_c1200_640x640_rgb.yaml) reads the 
 cd samples/vision/yolov12/conversion
 bstnnx_run --config yolov12n-det_det_c1200_640x640_rgb.yaml
 ```
-
-This is a conversion example, not a reproducible recipe for the committed quantized package. Check the exported ONNX input names, shapes, preprocessing and output protocol before compiling. Published packages may have been built with a different toolchain version. The generated files and layout depend on the compiler version. `../model/download.sh` checks that the committed package files exist; it performs no download.
 
 ## Variant examples
 

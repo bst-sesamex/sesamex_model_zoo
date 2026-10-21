@@ -1,5 +1,5 @@
 # BSTNNX 8.3.1 image calibration example.
-# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/yolov12/train/compiler/c1200_yolov10n_det_relu6.yaml.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
 # ONNX is included in assets/; supply representative calibration images.
 model_path: ./assets/yolov10n-det/yolov10n-bst-relu6.onnx
 model_name: yolov10n-det

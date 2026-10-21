@@ -2,7 +2,6 @@ English | [简体中文](./README_cn.md)
 
 # Face Landmark Detection Evaluation
 
-
 Performance & accuracy reference for face landmark detection on Aura / Kalos.
 
 ## 1. Prerequisites
@@ -10,7 +9,6 @@ Performance & accuracy reference for face landmark detection on Aura / Kalos.
 - Board: Aura (C1200 chip) or Kalos (A1000 chip), with `libbsnnrt.so`
 - Python 3 + `pybsnn` (installed by repo-root `init_env.sh` on board)
 - For accuracy: Python 3.8+, 300W dataset evaluation tooling
-- Models are committed in-repo under `../model/`; `../model/download.sh` verifies completeness.
 
 ## 2. Dataset
 

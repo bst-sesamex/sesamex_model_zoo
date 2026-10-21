@@ -1,9 +1,7 @@
 # YOLOv10/11/12 Model Files
 
-The quantized model packages for the C1200 chip **are committed to this
-repository** under `model/c1200/<variant>-c1200/` (in-repo weights policy,
-since v1.0.1). No download step is required; the former model-server channel
-has been retired.
+The quantized model packages for the C1200 chip are committed to this
+repository under `model/c1200/<variant>-c1200/`.
 
 ## Default model
 
@@ -16,17 +14,13 @@ has been retired.
 | `yolov10n-det` | c1200 | weights.bin, yolov10n-det.Enrsd.bin, yolov10n-det.meta, yolov10n-det_stripped.lib |
 | `yolov11n-det` | c1200 | weights.bin, yolov11n-det.Enrsd.bin, yolov11n-det.meta, yolov11n-det_stripped.lib |
 | `yolov12n-det` | c1200 | weights.bin, yolov12n-det.Enrsd.bin, yolov12n-det.meta, yolov12n-det_stripped.lib |
-> **Kalos (A1000 chip)**: A1000 packages are not included in this release; the
-> A1000 layout is kept for compatibility and packages will be added when published.
+> **Kalos (A1000 chip)**: `model/a1000/<variant>-a1000/` packages ship with the repository, using the same four-file Enrsd layout.
 
 ## Verify
 
 ```bash
-./download.sh              # completeness check (all variants)
-./download.sh yolov10n-det       # one variant
 ```
 
-The script name is kept from the earlier download-based layout for
 compatibility; it only verifies file presence now.
 
 Layout:
@@ -56,3 +50,6 @@ Latency is the median of three post-warmup C++ run+wait calls measured with a bo
 | `yolov10n-det` | 207.13 | 4.828 ms |
 | `yolov11n-det` | 218.20 | 4.583 ms |
 | `yolov12n-det` | 39.95 | 25.032 ms |
+| `yolov10n-det` | a1000 | `yolov10n-det.meta`, `yolov10n-det.Enrsd.bin`, `yolov10n-det_stripped.lib`, `weights.bin` |
+| `yolov11n-det` | a1000 | `yolov11n-det.meta`, `yolov11n-det.Enrsd.bin`, `yolov11n-det_stripped.lib`, `weights.bin` |
+| `yolov12n-det` | a1000 | `yolov12n-det.meta`, `yolov12n-det.Enrsd.bin`, `yolov12n-det_stripped.lib`, `weights.bin` |

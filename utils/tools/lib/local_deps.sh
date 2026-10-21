@@ -32,7 +32,7 @@ local_deps_install_pybsnn() {
     local platform wheel_name wheel_path
     local root="${ROOT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)}"
 
-    if python3 -c "import pybsnn" 2>/dev/null; then
+    if python3 -m pip show pybsnn >/dev/null 2>&1; then
         echo "[Info] PyBSNN already installed, skipping."
         return 0
     fi
@@ -48,7 +48,7 @@ local_deps_install_pybsnn() {
         return 1
     fi
     echo "[Info] Installing PyBSNN (${platform}) from repo: ${wheel_path}"
-    pip3 install --force-reinstall "$wheel_path"
+    pip3 install --no-deps --force-reinstall "$wheel_path"
 }
 
 local_deps_export_env() {

@@ -1,10 +1,8 @@
 # CondLaneNet 模型文件
 
-C1200 模型文件按原工程 `models/condlanenet/Deploy/C++/prebuild/model/` 的对应模型包逐文件恢复，保留原始文件名。
+C1200 模型文件位于 `model/c1200/`，文件名与下方列表一致。
 
 - `condlanenet-c1200`：`condlanenet.ModelGraph.bin`, `condlanenet.ModelGraph.bin.txt`, `condlanenet.meta`, `condlanenet.sdag.bin`, `weights.bin`
-
-运行 `./download.sh` 检查所需文件是否在位。此检查仅验证包完整性，板端推理与精度需要另行验证。
 
 ## Aura C1200 推理性能
 
@@ -13,3 +11,4 @@ C1200 模型文件按原工程 `models/condlanenet/Deploy/C++/prebuild/model/` �
 | 模型 | FPS | 耗时 |
 |---|---:|---:|
 | `condlanenet` | 148.54 | 6.732 ms |
+| `condlanenet` | a1000 | `condlanenet.meta`、`condlanenet.Enrsd.bin`、`condlanenet_stripped.lib`、`weights.bin` |

@@ -1,0 +1,92 @@
+=== GRAPH FILE HEADER ===
+Magic: 0x47524150
+Version: 1
+Number of Nodes: 11
+Opening Count: 0x01
+Exiting Count: 0x01
+Size: 104
+=== NODE 0 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Children: [0]
+
+=== NODE 1 ===
+  Curr ID: 0x00000000
+  Prev Count: 0x00000000
+  Next Count: 0x00000004
+  Length: 8 bytes
+  Children: [1, 4, 6, 8]
+
+=== NODE 2 ===
+  Curr ID: 0x00000001
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [0]
+  Children: [2]
+
+=== NODE 3 ===
+  Curr ID: 0x00000002
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [1]
+  Children: [3]
+
+=== NODE 4 ===
+  Curr ID: 0x00000003
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [2]
+  Children: [4]
+
+=== NODE 5 ===
+  Curr ID: 0x00000004
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [0, 3]
+  Children: [5]
+
+=== NODE 6 ===
+  Curr ID: 0x00000005
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [4]
+  Children: [6]
+
+=== NODE 7 ===
+  Curr ID: 0x00000006
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [0, 5]
+  Children: [7]
+
+=== NODE 8 ===
+  Curr ID: 0x00000007
+  Prev Count: 0x00000001
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [6]
+  Children: [8]
+
+=== NODE 9 ===
+  Curr ID: 0x00000008
+  Prev Count: 0x00000002
+  Next Count: 0x00000001
+  Length: 8 bytes
+  Precedors: [0, 7]
+  Children: [255]
+
+=== NODE 10 ===
+  Curr ID: 0x000000ff
+  Prev Count: 0x00000001
+  Next Count: 0x00000000
+  Length: 8 bytes
+  Precedors: [8]
+

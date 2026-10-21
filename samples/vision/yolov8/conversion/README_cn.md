@@ -24,7 +24,7 @@
 
 ### 第 2 步：准备校准数据
 
-按照 YAML 中的目录准备有代表性的校准图像。`Quant.inputs` 中的颜色转换、mean 和 scale 来自旧工程的编译配置。
+按照 YAML 中的目录准备有代表性的校准图像。`Quant.inputs` 定义校准时的颜色转换、mean 和 scale。
 
 ### 第 3 步：bstnnx_run 量化编译
 
@@ -35,8 +35,6 @@ cd samples/vision/yolov8/conversion
 bstnnx_run --config yolov8n-det_det_c1200_640x640_rgb.yaml
 ```
 
-此配置是转换示例，不保证复现仓库中的已量化模型包。编译前需核对 ONNX 输入名称、形状、预处理及输出协议；已发布模型包可能由其他工具链版本生成，产物文件和目录结构由实际工具链决定。`../model/download.sh` 只检查仓库内模型文件是否齐全，不执行下载。
-
 ## 各变体示例
 
 - `yolov8n-det`: [yolov8n-det_det_c1200_640x640_rgb.yaml](./yolov8n-det_det_c1200_640x640_rgb.yaml)
@@ -45,7 +43,7 @@ bstnnx_run --config yolov8n-det_det_c1200_640x640_rgb.yaml
 
 ## 输出协议
 
-检测：按 stride 8/16/32 三层（legacy 为 reg/cls 成对 6 张量；fused 为 144 通道）；分割与姿态在检测头之外追加 mask 系数（32 维）与关键点（17 点 x3）张量。以 runtime/python/pybsnn_demo.py 实际解析为准。
+检测：按 stride 8/16/32 三层（旧格式为 reg/cls 成对 6 张量；fused 为 144 通道）；分割与姿态在检测头之外追加 mask 系数（32 维）与关键点（17 点 x3）张量。以 runtime/python/pybsnn_demo.py 实际解析为准。
 
 以 runtime/python/pybsnn_demo.py（det）/ pybsnn_seg_demo.py / pybsnn_pose_demo.py 的实际解析为准。
 

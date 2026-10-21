@@ -1,9 +1,10 @@
 {
   "name": "yolov12n-det",
-  "comp_version": "7.1.0-72edde56",
+  "comp_version": "8.3.1-de1720ad",
   "device": "C1200",
   "meta_fmt_ver": 0.5,
-  "net_fw_commitid": "6d77afe5",
+  "net_fw_commitid": "288cecf4",
+  "model_uid": 3148928604,
   "has_edp_gemm": "Y",
   "dsp_op": "Y",
   "net_batch_size": 1,
@@ -559,15 +560,13 @@
     }
   },
   "activation": {
-    "size": 66342912
+    "size": 67510272
   },
   "weight": {
-    "size": 3865280
+    "size": 3877824
   },
   "task_num": 53,
   "dag": {
-    "size": 6400,
-    "num": 1
-  },
-  "model_uid": 3825317333
+    "size": 7232
+  }
 }

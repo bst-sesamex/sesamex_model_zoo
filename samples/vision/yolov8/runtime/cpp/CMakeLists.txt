@@ -16,4 +16,4 @@ target_link_opencv_sysroot_math(yolov8)
 
 # Optionally strip the binary at link time (matches previous -s intent)
 target_link_options(yolov8 PRIVATE $<$<CONFIG:Release>:-s>)
-install(TARGETS yolov8 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../prebuild/app)
+install(TARGETS yolov8 DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/prebuild/app)

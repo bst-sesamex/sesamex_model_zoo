@@ -107,10 +107,15 @@ struct ModelMeta {
                 tensor.pitch = tensor_json["Dim"]["pitch"].get<std::vector<int>>();
                 tensor.dequant_scale = tensor_json["dequant_scale"].get<std::vector<float>>();
                 
-                // 解析维度信息 (DWH格式，即depth, width, height)
-                tensor.depth = tensor.size[0];
-                tensor.width = tensor.size[1];
-                tensor.height = tensor.size[2];
+                // Parse dims. The meta Dim.size is [W,H,D,B] (WHD order) for
+                // this model family, same convention as the input tensors
+                // above: width=size[0], height=size[1], channels=size[2].
+                // The previous DWH-order reading (width=size[1],
+                // height=size[2]) produced a transposed 544x1 output frame
+                // and crashed the mask/GT loaders on 960x544 aux files.
+                tensor.depth = tensor.size[2];
+                tensor.width = tensor.size[0];
+                tensor.height = tensor.size[1];
                 tensor.batch_size = tensor.size[3];
                 
                 output_tensors.push_back(tensor);

@@ -9,4 +9,4 @@ target_link_libraries(condlanenet ${OpenCV_LIBS} ${BSNN_LIB} ${BSRPC_LIB} pthrea
 target_link_opencv_sysroot_math(condlanenet)
 
 target_link_options(condlanenet PRIVATE $<$<CONFIG:Release>:-s>)
-install(TARGETS condlanenet DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../prebuild/app)
+install(TARGETS condlanenet DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/prebuild/app)

@@ -172,29 +172,30 @@ if command -v nproc >/dev/null 2>&1; then JOBS=$(nproc); fi
 if [[ "$OSTYPE" == darwin* ]] && command -v sysctl >/dev/null 2>&1; then JOBS=$(sysctl -n hw.ncpu); fi
 cmake --build "${BUILD_DIR}" -j"${JOBS}"
 
+echo "[Step] Installing built binary to: ${SCRIPT_DIR}/prebuild/app"
+APP_DIR="${SCRIPT_DIR}/prebuild/app"   # <sample>/runtime/cpp/prebuild/app
+mkdir -p "${APP_DIR}"
+APP_DIR="$(cd "${APP_DIR}" && pwd)"
 if [[ "${MODEL_ZOO_HOST_NATIVE:-}" == "1" ]]; then
-  APP_DIR="${SCRIPT_DIR}/prebuild/app"
-  mkdir -p "${APP_DIR}"
-  APP_DIR="$(cd "${APP_DIR}" && pwd)"
-  echo "[Step] Install host-native binary to: ${APP_DIR}"
-  BIN=""
-  if command -v find >/dev/null 2>&1; then
-    BIN=$(find "${BUILD_DIR}" -maxdepth 1 -type f -executable \
-        ! -name "CMake*" \
-        ! -name "Makefile" \
-        ! -name "*.cmake" \
-        ! -name "*.txt" \
-        ! -name "*.sh" \
-        ! -name "*.bin" \
-        -printf "%T@ %p\n" 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2-)
-  fi
-  if [[ -z "${BIN}" || ! -f "${BIN}" ]]; then
-    echo "[Error] Failed to locate built executable under: ${BUILD_DIR}" >&2
-    exit 2
-  fi
-  cp -f "${BIN}" "${APP_DIR}/"
-  chmod +x "${APP_DIR}/$(basename "${BIN}")" || true
-  echo "[Done] Installed: ${APP_DIR}/$(basename "${BIN}")"
+  echo "[Info] host-native build (MODEL_ZOO_HOST_NATIVE=1)"
 fi
+BIN=""
+if command -v find >/dev/null 2>&1; then
+  BIN=$(find "${BUILD_DIR}" -maxdepth 1 -type f -executable \
+      ! -name "CMake*" \
+      ! -name "Makefile" \
+      ! -name "*.cmake" \
+      ! -name "*.txt" \
+      ! -name "*.sh" \
+      ! -name "*.bin" \
+      -printf "%T@ %p\n" 2>/dev/null | sort -n | tail -1 | cut -d' ' -f2-)
+fi
+if [[ -z "${BIN}" || ! -f "${BIN}" ]]; then
+  echo "[Error] Failed to locate built executable under: ${BUILD_DIR}" >&2
+  exit 2
+fi
+cp -f "${BIN}" "${APP_DIR}/"
+chmod +x "${APP_DIR}/$(basename "${BIN}")" || true
+echo "[Done] Installed: ${APP_DIR}/$(basename "${BIN}")"
 
 echo "[Done] Build finished: ${BUILD_DIR}"

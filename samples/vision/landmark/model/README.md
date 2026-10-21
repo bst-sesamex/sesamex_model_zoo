@@ -1,9 +1,7 @@
 # Face Landmark Detection Model Files
 
-The quantized model packages for the C1200 chip **are committed to this
-repository** under `model/c1200/<variant>-c1200/` (in-repo weights policy,
-since v1.0.1). No download step is required; the former model-server channel
-has been retired.
+The quantized model packages for the C1200 chip are committed to this
+repository under `model/c1200/<variant>-c1200/`.
 
 ## Default model
 
@@ -15,17 +13,13 @@ has been retired.
 |---|---|---|
 | `size56` | c1200 | weights.bin, landmark.Enrsd.bin, landmark.meta, landmark_stripped.lib |
 | `size224` | c1200 | weights.bin, landmark.Enrsd.bin, landmark.meta, landmark_stripped.lib |
-> **Kalos (A1000 chip)**: A1000 packages are not included in this release; the
-> A1000 layout is kept for compatibility and packages will be added when published.
+> **Kalos (A1000 chip)**: `model/a1000/<variant>-a1000/` packages ship with the repository, using the same four-file Enrsd layout.
 
 ## Verify
 
 ```bash
-./download.sh              # completeness check (all variants)
-./download.sh size56       # one variant
 ```
 
-The script name is kept from the earlier download-based layout for
 compatibility; it only verifies file presence now.
 
 Layout:
@@ -54,3 +48,5 @@ Latency is the median of three post-warmup C++ run+wait calls measured with a bo
 |---|---:|---:|
 | `size224` | 1506.02 | 0.664 ms |
 | `size56` | 2403.85 | 0.416 ms |
+| `size224` | a1000 | `landmark.meta`, `landmark.Enrsd.bin`, `landmark_stripped.lib`, `weights.bin` |
+| `size56` | a1000 | `landmark.meta`, `landmark.Enrsd.bin`, `landmark_stripped.lib`, `weights.bin` |

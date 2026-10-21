@@ -16,4 +16,4 @@ target_link_opencv_sysroot_math(yolo-det)
 
 # Optionally strip the binary at link time (matches previous -s intent)
 target_link_options(yolo-det PRIVATE $<$<CONFIG:Release>:-s>)
-install(TARGETS yolo-det DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/../prebuild/app)
+install(TARGETS yolo-det DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/prebuild/app)

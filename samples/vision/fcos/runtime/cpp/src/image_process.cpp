@@ -154,9 +154,9 @@ void fcos_det_postprocess(const BSNN_MODEL& model,
         if (ctr_pitch < ctr_channels) ctr_pitch = ctr_channels;
 
         // 获取数据指针
-        int8_t *cls_base = (int8_t*)model.OutputVa(cls_idx);
-        int8_t *box_base = (int8_t*)model.OutputVa(box_idx);
-        int8_t *ctr_base = (int8_t*)model.OutputVa(ctr_idx);
+        uint8_t *cls_base = model.OutputVa(cls_idx);
+        uint8_t *box_base = model.OutputVa(box_idx);
+        uint8_t *ctr_base = model.OutputVa(ctr_idx);
 
         // per-channel 反量化 scale
         std::vector<float> cls_scale_vec = BSNN_MODEL::QuantScales(cls_attr);
@@ -193,25 +193,31 @@ void fcos_det_postprocess(const BSNN_MODEL& model,
             for (int w = 0; w < out_w; w++) {
                 int pixel_offset = h * out_w + w;
 
-                int8_t* p_cls = cls_base + pixel_offset * cls_pitch;
-                int8_t* p_ctr = ctr_base + pixel_offset * ctr_pitch;
+                uint8_t* p_cls = cls_base + pixel_offset * cls_pitch;
+                uint8_t* p_ctr = ctr_base + pixel_offset * ctr_pitch;
 
                 // ---- 反量化 centerness 并 sigmoid ----
-                float ctr_val = normal_sigmoid(p_ctr[0] * ctr_scales(0));
+                float ctr_raw = (ctr_attr.dtype == BSNN_TENSOR_UINT8)
+                                    ? static_cast<float>(p_ctr[0])
+                                    : static_cast<float>(static_cast<int8_t>(p_ctr[0]));
+                float ctr_val = normal_sigmoid(ctr_raw * ctr_scales(0));
 
                 // ---- 找最大类别得分 ----
                 // 先在 int8 域快速过滤
-                int8_t max_cls_i8 = -128;
+                int max_cls_raw = -129;
                 int best_cls = 0;
                 for (int c = 0; c < cls_channels; c++) {
-                    if (p_cls[c] > max_cls_i8) {
-                        max_cls_i8 = p_cls[c];
+                    int cls_value = (cls_attr.dtype == BSNN_TENSOR_UINT8)
+                                        ? static_cast<int>(p_cls[c])
+                                        : static_cast<int>(static_cast<int8_t>(p_cls[c]));
+                    if (cls_value > max_cls_raw) {
+                        max_cls_raw = cls_value;
                         best_cls = c;
                     }
                 }
 
                 // 反量化 + sigmoid
-                float cls_score = normal_sigmoid(max_cls_i8 * cls_scales(best_cls));
+                float cls_score = normal_sigmoid(max_cls_raw * cls_scales(best_cls));
 
                 // 复合得分 = cls * centerness
                 float score = cls_score * ctr_val;
@@ -222,17 +228,22 @@ void fcos_det_postprocess(const BSNN_MODEL& model,
                 float loc_x = w * stride + stride / 2.0f;
                 float loc_y = h * stride + stride / 2.0f;
 
-                int8_t* p_box = box_base + pixel_offset * box_pitch;
+                uint8_t* p_box = box_base + pixel_offset * box_pitch;
 
                 // box regression 值: l, t, r, b
                 // inference.py 中 reg = box_reg[0].permute(1,2,0).reshape(-1,4)
                 // 然后 boxes = [loc_x - reg[:,0], loc_y - reg[:,1], loc_x + reg[:,2], loc_y + reg[:,3]]
                 // FCOS 原始输出是 exp(x) 形式? 不, inference.py 中直接用 raw 值不做 exp
                 // 所以板端也直接用反量化后的值
-                float l = p_box[0] * box_scales(0);
-                float t = p_box[1] * box_scales(1);
-                float r = p_box[2] * box_scales(2);
-                float b = p_box[3] * box_scales(3);
+                auto box_value = [&](int channel) {
+                    return (box_attr.dtype == BSNN_TENSOR_UINT8)
+                               ? static_cast<float>(p_box[channel]) * box_scales(channel)
+                               : static_cast<float>(static_cast<int8_t>(p_box[channel])) * box_scales(channel);
+                };
+                float l = box_value(0);
+                float t = box_value(1);
+                float r = box_value(2);
+                float b = box_value(3);
 
                 float x1 = loc_x - l;
                 float y1 = loc_y - t;
@@ -382,4 +393,3 @@ void draw_bboxes_fcos(cv::Mat& img, const std::vector<ObjInfo>& result,
                     cv::FONT_HERSHEY_SIMPLEX, 0.5, color, 1, cv::LINE_AA);
     }
 }
-

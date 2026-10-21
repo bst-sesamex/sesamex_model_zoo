@@ -134,8 +134,8 @@ benchmarks:
     input: { shape: [2, 3, 544, 960], format: RGB888P }
     environment: { hardware: Aura_C1200, runtime: libbsnnrt 0.13.0, timing: board-side monotonic clock }
     performance:
-      - { metric: throughput, value: 14.64, unit: fps, qualifier: exact, scope: "1000 / median latency of 3 rounds" }
-      - { metric: latency, value: 68.291, unit: ms, qualifier: exact, scope: "median of 3 warmup-once C++ run+wait measurements" }
+      - { metric: throughput, value: 4.59, unit: fps, qualifier: exact, scope: "1000 / latency of single-output package (size_limit 50 / accuracy_level 1)" }
+      - { metric: latency, value: 217.787, unit: ms, qualifier: exact, scope: "single-output package (BSTNNX 8.3.1, accuracy_level 1), C++ single inference" }
     accuracy:
       - { metric: EPE, value: 1.88, unit: pixels, qualifier: exact, scope: "draft-recorded figure (test set A)" }
       - { metric: EPE, value: 2.02, unit: pixels, qualifier: exact, scope: "draft-recorded figure (test set B)" }

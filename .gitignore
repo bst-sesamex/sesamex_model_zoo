@@ -3,8 +3,9 @@ build/
 __pycache__/
 *.pyc
 
-# runtime scratch
+# runtime scratch / conversion pipeline intermediates
 output/
+output_*/
 calibration_data*/
 
 # large source models are committed only under curated conversion/assets paths via Git LFS

@@ -34,7 +34,6 @@ samples/vision/<model>/
 │   └── eval_batch.py
 ├── model/                        # 4. model files
 │   ├── README.md / README_cn.md  #    file list + versions + md5
-│   └── download.sh
 ├── runtime/                      # 5/6. runtimes
 │   ├── python/
 │   │   ├── main.py
@@ -57,18 +56,16 @@ Artifacts are named `{model}_{task}_{chip}_{WxH}_{inputfmt}.{ext}`, e.g.
 
 When a directory hosts a model family (e.g. `yolov12/` containing v10n/v11n/v12n),
 the directory-level README carries a family overview + variant index table;
-`conversion/` and `model/` hold one yaml and one download entry per variant;
+`conversion/` and `model/` hold one yaml and one package entry per variant;
 routines in `runtime/` are split by task.
 
 ### Licensing rules
 
 - The repository is Apache-2.0. Training code of third-party frameworks is NOT
   committed here; `conversion/README.md` links to the upstream repository instead.
-- Model weights ARE committed in-repo since v1.0.1 (`model/c1200/...`); do not
+- Model weights ARE committed in-repo (`model/<platform>/...`); do not
   commit SDK binaries or unreviewed large assets. Curated ONNX and training
-  checkpoints belong under `conversion/assets/` via Git LFS with source and
-  SHA-256 entries in `docs/manifests/conversion_assets.yaml`; `model/download.sh`
-  only verifies file presence (no downloads).
+  checkpoints belong under `conversion/assets/` as regular git blobs.
 - Do not include internal hostnames, IP addresses, credentials or personal
   information in any file.
 

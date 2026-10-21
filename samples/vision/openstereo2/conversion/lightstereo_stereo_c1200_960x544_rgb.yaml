@@ -1,5 +1,5 @@
 # BSTNNX 8.3.1 image calibration example.
-# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/OpenStereo-2/train/compiler/main_c1200.yaml.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
 # The ONNX is included under assets/. Supply representative calibration images and verify preprocessing.
 model_path: ./assets/lightstereo/checkpoint_epoch_299.onnx
 model_name: lightstereo

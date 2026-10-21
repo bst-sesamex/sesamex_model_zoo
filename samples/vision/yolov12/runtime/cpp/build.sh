@@ -7,10 +7,17 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Locate the repository root. Version-control metadata is NOT required:
+# a directory is treated as the repo root when it carries the unified build
+# script itself, the repo markers (VERSION + samples/), or a .git directory.
+# This keeps zip/tar checkouts (no .git) working. The marker set mirrors
+# bsnn_find_repo_root() in utils/tools/lib/bsnn_env.sh.
 find_repo_root() {
 	local dir="$1"
 	while [[ -n "${dir}" && "${dir}" != "/" ]]; do
-		if [[ -d "${dir}/.git" ]]; then
+		if [[ -f "${dir}/utils/tools/lib/common_build.sh" ]] \
+			|| [[ -f "${dir}/VERSION" && -d "${dir}/samples" ]] \
+			|| [[ -d "${dir}/.git" ]]; then
 			echo "${dir}"
 			return 0
 		fi
@@ -19,13 +26,7 @@ find_repo_root() {
 	return 1
 }
 
-REPO_ROOT=""
-if REPO_ROOT="$(find_repo_root "${SCRIPT_DIR}")"; then
-	:
-	# found
-else
-	REPO_ROOT=""
-fi
+REPO_ROOT="$(find_repo_root "${SCRIPT_DIR}" || true)"
 
 COMMON_BUILD_SH=""
 if [[ -n "${REPO_ROOT}" && -f "${REPO_ROOT}/utils/tools/lib/common_build.sh" ]]; then

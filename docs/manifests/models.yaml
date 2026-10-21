@@ -1,21 +1,23 @@
 schema_version: 1
 release:
   platform: aura-kalos
-  version: "1.0.0"
-  model_archive_root: in-repo  # weights committed under samples/vision/<sample>/model/ since 1.0.1 (decision D8)
+  version: 1.0.0
+  model_archive_root: in-repo
 compatibility:
-  hardware: [Aura (C1200 chip), Kalos (A1000 chip)]
+  hardware:
+  - Aura (C1200 chip)
+  - Kalos (A1000 chip)
   runtime: libbsnnrt 0.13.x
   python_bindings: pybsnn 0.2.0+0.13.0 (aarch64, in-repo wheel)
 validation:
   repository_wide_board_test: false
-  statement: >
-    This manifest inventories model assets and checksums. Board-specific
+  statement: 'This manifest inventories model assets and checksums. Board-specific
     validation records are maintained separately from the algorithm source.
+
+    '
 models:
 - id: yolov8
   sample_path: samples/vision/yolov8
-  download_script: samples/vision/yolov8/model/download.sh
   assets:
   - filename: yolov8n-det.Enrsd.bin
     variant: yolov8n-det
@@ -32,9 +34,188 @@ models:
     task: pose
     format: bin
     sha256: 3c14d3a94a68c9e662fa6db3d7749e20f0359ba3186267004711a97cbc8fe56a
+  - filename: model/a1000/yolov8n-det-a1000/yolov8n-det.meta
+    variant: yolov8n-det
+    platform: a1000
+    task: det
+    format: meta
+    sha256: ada9b31b09a2e7d1e7877b1484f349b3f89688e6039e114b04afd441a3b3c6dc
+  - filename: model/a1000/yolov8n-det-a1000/yolov8n-det.ModelGraph.bin
+    variant: yolov8n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/a1000/yolov8n-det-a1000/yolov8n-det.ModelGraph.bin.txt
+    variant: yolov8n-det
+    platform: a1000
+    task: det
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/a1000/yolov8n-det-a1000/yolov8n-det.sdag.bin
+    variant: yolov8n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: cafcfc1c5728b4939378ef7ec8802eda2df478c661433b93919633e21984473f
+  - filename: model/a1000/yolov8n-det-a1000/weights.bin
+    variant: yolov8n-det
+    platform: a1000
+    task: det
+    format: weights
+    sha256: a7b124d379bef0117b445da783ae85b9480023f88024e9c08465ffc901f5fed2
+  - filename: model/a1000/yolov8n-pose-a1000/yolov8n-pose.meta
+    variant: yolov8n-pose
+    platform: a1000
+    task: pose
+    format: meta
+    sha256: e5010c49199daef8f7c58237106cabe978613457554e794849b01df6eedd8cde
+  - filename: model/a1000/yolov8n-pose-a1000/yolov8n-pose.ModelGraph.bin
+    variant: yolov8n-pose
+    platform: a1000
+    task: pose
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/a1000/yolov8n-pose-a1000/yolov8n-pose.ModelGraph.bin.txt
+    variant: yolov8n-pose
+    platform: a1000
+    task: pose
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/a1000/yolov8n-pose-a1000/yolov8n-pose.sdag.bin
+    variant: yolov8n-pose
+    platform: a1000
+    task: pose
+    format: bin
+    sha256: 3f3efee73d12973e0243b89e80650b2f48c4f83bf32e5899174bfeeec4cc60f1
+  - filename: model/a1000/yolov8n-pose-a1000/weights.bin
+    variant: yolov8n-pose
+    platform: a1000
+    task: pose
+    format: weights
+    sha256: a2cdb879821137db63a0c5291d12537bc81ddd50c9215789743eb934dd1735a0
+  - filename: model/a1000/yolov8n-seg-a1000/yolov8n-seg.meta
+    variant: yolov8n-seg
+    platform: a1000
+    task: seg
+    format: meta
+    sha256: 7c6659a1da27dfb658fc7a37afbeb5aa2fec751a505c531a05ed8af21fe6760b
+  - filename: model/a1000/yolov8n-seg-a1000/yolov8n-seg.ModelGraph.bin
+    variant: yolov8n-seg
+    platform: a1000
+    task: seg
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/a1000/yolov8n-seg-a1000/yolov8n-seg.ModelGraph.bin.txt
+    variant: yolov8n-seg
+    platform: a1000
+    task: seg
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/a1000/yolov8n-seg-a1000/yolov8n-seg.sdag.bin
+    variant: yolov8n-seg
+    platform: a1000
+    task: seg
+    format: bin
+    sha256: 746e74aba1fa739c7a3091f4888ff32e4d974b6f05e6f293849be69b96041529
+  - filename: model/a1000/yolov8n-seg-a1000/weights.bin
+    variant: yolov8n-seg
+    platform: a1000
+    task: seg
+    format: weights
+    sha256: 3fadc1407a85be23647398425c7c3d09f8deb9f75f3e832225fc2feac12e642e
+  - filename: model/c1200/yolov8n-det-c1200/yolov8n-det.meta
+    variant: yolov8n-det
+    platform: c1200
+    task: det
+    format: meta
+    sha256: 0330ff6f4bb663624bbfd27013ae0d5037a3c0dafc8ab0220f07fa9d9a85029f
+  - filename: model/c1200/yolov8n-det-c1200/yolov8n-det.ModelGraph.bin
+    variant: yolov8n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/c1200/yolov8n-det-c1200/yolov8n-det.ModelGraph.bin.txt
+    variant: yolov8n-det
+    platform: c1200
+    task: det
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/c1200/yolov8n-det-c1200/yolov8n-det.sdag.bin
+    variant: yolov8n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: c4e98f994e28a0b24b5e8cdc2b4b0dbeeaaf4cb5e62a9876398004b5aae4b50b
+  - filename: model/c1200/yolov8n-det-c1200/weights.bin
+    variant: yolov8n-det
+    platform: c1200
+    task: det
+    format: weights
+    sha256: dcce1be3354a9eb18015ab1a6b1d5ef60ff5c3560f81fccc404623475d129f99
+  - filename: model/c1200/yolov8n-pose-c1200/yolov8n-pose.meta
+    variant: yolov8n-pose
+    platform: c1200
+    task: pose
+    format: meta
+    sha256: b1cb0c25ee89f3d4dea95b32338b02a0d54225e738ea1800f88fb17fa52f2799
+  - filename: model/c1200/yolov8n-pose-c1200/yolov8n-pose.ModelGraph.bin
+    variant: yolov8n-pose
+    platform: c1200
+    task: pose
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/c1200/yolov8n-pose-c1200/yolov8n-pose.ModelGraph.bin.txt
+    variant: yolov8n-pose
+    platform: c1200
+    task: pose
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/c1200/yolov8n-pose-c1200/yolov8n-pose.sdag.bin
+    variant: yolov8n-pose
+    platform: c1200
+    task: pose
+    format: bin
+    sha256: 11bb08c9a496fd2d0f08cdd369316bf739c95c0aafec22dd9220d034b28a8209
+  - filename: model/c1200/yolov8n-pose-c1200/weights.bin
+    variant: yolov8n-pose
+    platform: c1200
+    task: pose
+    format: weights
+    sha256: a0cb86a677cb740e44c75603ebd9193223d70f3ea56e813ebab6015831b8cf2d
+  - filename: model/c1200/yolov8n-seg-c1200/yolov8n-seg.meta
+    variant: yolov8n-seg
+    platform: c1200
+    task: seg
+    format: meta
+    sha256: 7260904818767c2253da4243120cdb6316501f94e4bfc55d3d1ce5e592121ce5
+  - filename: model/c1200/yolov8n-seg-c1200/yolov8n-seg.ModelGraph.bin
+    variant: yolov8n-seg
+    platform: c1200
+    task: seg
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/c1200/yolov8n-seg-c1200/yolov8n-seg.ModelGraph.bin.txt
+    variant: yolov8n-seg
+    platform: c1200
+    task: seg
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/c1200/yolov8n-seg-c1200/yolov8n-seg.sdag.bin
+    variant: yolov8n-seg
+    platform: c1200
+    task: seg
+    format: bin
+    sha256: 73d0c42f1311cabc668100cc142581b15cd47041917e1c38875588c897946327
+  - filename: model/c1200/yolov8n-seg-c1200/weights.bin
+    variant: yolov8n-seg
+    platform: c1200
+    task: seg
+    format: weights
+    sha256: 3a4f6bdb6e8e3ffe2c68f6b391a50835aaeb39b362a877899c1ed114bb827277
 - id: yolov12
   sample_path: samples/vision/yolov12
-  download_script: samples/vision/yolov12/model/download.sh
   assets:
   - filename: yolov10n-det.Enrsd.bin
     variant: yolov10n-det
@@ -51,27 +232,324 @@ models:
     task: det
     format: bin
     sha256: 5f32a3dd0f1a1aa2a17bac017345709510d240acd7d3d34a768c76301f2bceb5
+  - filename: model/a1000/yolov10n-det-a1000/yolov10n-det.meta
+    variant: yolov10n-det
+    platform: a1000
+    task: det
+    format: meta
+    sha256: 8d228f08fa2e41b3ad443867d84751c2dd0defda6df1a1dfa5897e33abeb757e
+  - filename: model/a1000/yolov10n-det-a1000/yolov10n-det.ModelGraph.bin
+    variant: yolov10n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: b599a6e75537b731cf68bf8857b9b7155b9834abb406fe81dca453435b52828b
+  - filename: model/a1000/yolov10n-det-a1000/yolov10n-det.ModelGraph.bin.txt
+    variant: yolov10n-det
+    platform: a1000
+    task: det
+    format: txt
+    sha256: ee726af080f955d2abe97d26ff6dd546b2b5df2c757708158ca418eee70e355e
+  - filename: model/a1000/yolov10n-det-a1000/yolov10n-det.sdag.bin
+    variant: yolov10n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 4cc8c690a6f8c44d8986820ba223acb8483d0b07c05fdd5e31838a1c6d3b1139
+  - filename: model/a1000/yolov10n-det-a1000/weights.bin
+    variant: yolov10n-det
+    platform: a1000
+    task: det
+    format: weights
+    sha256: 10366100dda86079ab32d985a9de073d4006e768918b9c6e434423f568d6b93f
+  - filename: model/a1000/yolov11n-det-a1000/yolov11n-det.meta
+    variant: yolov11n-det
+    platform: a1000
+    task: det
+    format: meta
+    sha256: c74014b9c998ff44547da09bf619c3a5a1c2c48d69e4d2a189ae45cb6dca7863
+  - filename: model/a1000/yolov11n-det-a1000/yolov11n-det.ModelGraph.bin
+    variant: yolov11n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 98828b64e26f1677879e63be754de8134fa120864f0c28193cb62204e82f140c
+  - filename: model/a1000/yolov11n-det-a1000/yolov11n-det.ModelGraph.bin.txt
+    variant: yolov11n-det
+    platform: a1000
+    task: det
+    format: txt
+    sha256: 55eb6dbd992e66e2c09f8d9d815f65d0ec2ada5c977c51c46091b05db8901687
+  - filename: model/a1000/yolov11n-det-a1000/yolov11n-det.sdag.bin
+    variant: yolov11n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 26f14cc500599eb0bb2962cb17694f419021112ae5ba9d6939686635d67abde8
+  - filename: model/a1000/yolov11n-det-a1000/weights.bin
+    variant: yolov11n-det
+    platform: a1000
+    task: det
+    format: weights
+    sha256: d8f10006a03af24d022e22d2bc1541fdc4c6cf20b2587f9441fe763efe42b7d1
+  - filename: model/a1000/yolov12n-det-a1000/yolov12n-det.meta
+    variant: yolov12n-det
+    platform: a1000
+    task: det
+    format: meta
+    sha256: 5da498d610bd89f5d638a2e0c13212b5d345a29f5a54fbc0e8fd0aaefd1bf6ff
+  - filename: model/a1000/yolov12n-det-a1000/yolov12n-det.ModelGraph.bin
+    variant: yolov12n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 09a08e4f610cd66cb1a1f2cd597a33787f84ca4988b4a22a761ca36bd3be0148
+  - filename: model/a1000/yolov12n-det-a1000/yolov12n-det.ModelGraph.bin.txt
+    variant: yolov12n-det
+    platform: a1000
+    task: det
+    format: txt
+    sha256: 54828354f56cbfeb750484352ce03f099d23cdab3f391557a905e2e37cc72e05
+  - filename: model/a1000/yolov12n-det-a1000/yolov12n-det.sdag.bin
+    variant: yolov12n-det
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 4f7e19d2f3c3635de79aa99a562125ef61d0214b57dbf83a7e7604fa724be118
+  - filename: model/a1000/yolov12n-det-a1000/weights.bin
+    variant: yolov12n-det
+    platform: a1000
+    task: det
+    format: weights
+    sha256: 3a08d34f95c6a4d6034c809115037bb5a765bb17595de9cc23a2ac0f522b6de7
+  - filename: model/c1200/yolov10n-det-c1200/yolov10n-det.meta
+    variant: yolov10n-det
+    platform: c1200
+    task: det
+    format: meta
+    sha256: d46df65518a1f325c401a6be6ffd23581dede4a5b0c9934c1cd9e86f40de091d
+  - filename: model/c1200/yolov10n-det-c1200/yolov10n-det.ModelGraph.bin
+    variant: yolov10n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: b599a6e75537b731cf68bf8857b9b7155b9834abb406fe81dca453435b52828b
+  - filename: model/c1200/yolov10n-det-c1200/yolov10n-det.ModelGraph.bin.txt
+    variant: yolov10n-det
+    platform: c1200
+    task: det
+    format: txt
+    sha256: ee726af080f955d2abe97d26ff6dd546b2b5df2c757708158ca418eee70e355e
+  - filename: model/c1200/yolov10n-det-c1200/yolov10n-det.sdag.bin
+    variant: yolov10n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: f7378547d3e6dd36bee7a7160b21d66af3111f9a8fa338cfb5cb9b4a601a9932
+  - filename: model/c1200/yolov10n-det-c1200/weights.bin
+    variant: yolov10n-det
+    platform: c1200
+    task: det
+    format: weights
+    sha256: 941af9815c045f7a3995a03f7b3aecea641747f80cfbac0024c64dfb0669f9e8
+  - filename: model/c1200/yolov11n-det-c1200/yolov11n-det.meta
+    variant: yolov11n-det
+    platform: c1200
+    task: det
+    format: meta
+    sha256: f2da0379e577fd9956fa6123fcc07a09ba3413ee3c68cd9ec97365b9d6024117
+  - filename: model/c1200/yolov11n-det-c1200/yolov11n-det.ModelGraph.bin
+    variant: yolov11n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: 98828b64e26f1677879e63be754de8134fa120864f0c28193cb62204e82f140c
+  - filename: model/c1200/yolov11n-det-c1200/yolov11n-det.ModelGraph.bin.txt
+    variant: yolov11n-det
+    platform: c1200
+    task: det
+    format: txt
+    sha256: 55eb6dbd992e66e2c09f8d9d815f65d0ec2ada5c977c51c46091b05db8901687
+  - filename: model/c1200/yolov11n-det-c1200/yolov11n-det.sdag.bin
+    variant: yolov11n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: 963e1ce1355efb2ac4a5aee41f21cca60fbaa3a25285a7eb404f6c815a884d2f
+  - filename: model/c1200/yolov11n-det-c1200/weights.bin
+    variant: yolov11n-det
+    platform: c1200
+    task: det
+    format: weights
+    sha256: d8c0f65a4584e7502523025a8eb29347edfc9df1f3a4cf772de31aba630468f5
+  - filename: model/c1200/yolov12n-det-c1200/yolov12n-det.meta
+    variant: yolov12n-det
+    platform: c1200
+    task: det
+    format: meta
+    sha256: 18e94b3e1d82944f6f01a3418458db52147d1b01da62b6b343e1b25f33016aaa
+  - filename: model/c1200/yolov12n-det-c1200/yolov12n-det.ModelGraph.bin
+    variant: yolov12n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: 09a08e4f610cd66cb1a1f2cd597a33787f84ca4988b4a22a761ca36bd3be0148
+  - filename: model/c1200/yolov12n-det-c1200/yolov12n-det.ModelGraph.bin.txt
+    variant: yolov12n-det
+    platform: c1200
+    task: det
+    format: txt
+    sha256: 54828354f56cbfeb750484352ce03f099d23cdab3f391557a905e2e37cc72e05
+  - filename: model/c1200/yolov12n-det-c1200/yolov12n-det.sdag.bin
+    variant: yolov12n-det
+    platform: c1200
+    task: det
+    format: bin
+    sha256: 0d6493e6dd7d89d4fecc2512457be40597d3dc16183859bebaa1d045584b7b6d
+  - filename: model/c1200/yolov12n-det-c1200/weights.bin
+    variant: yolov12n-det
+    platform: c1200
+    task: det
+    format: weights
+    sha256: 0379d08f987cb90f5b4762b09fca6b8490dc8479d46148c681c573aa2d9d2260
 - id: yolov5
   sample_path: samples/vision/yolov5
-  download_script: samples/vision/yolov5/model/download.sh
   assets:
   - filename: yolov5m.sdag.bin
     variant: yolov5m
     task: det
     format: bin
     sha256: 1a803864a56d9e375fc5b1c515f285eb5875df07db382f9f98ecd27b9f12d1b5
+  - filename: model/a1000/yolov5m-a1000/yolov5m.meta
+    variant: yolov5m
+    platform: a1000
+    task: det
+    format: meta
+    sha256: 7602c805b658fee23d015c9a018684f15b2ab71f6dcfd6f1af8f86bdae99f27e
+  - filename: model/a1000/yolov5m-a1000/yolov5m.ModelGraph.bin
+    variant: yolov5m
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/a1000/yolov5m-a1000/yolov5m.ModelGraph.bin.txt
+    variant: yolov5m
+    platform: a1000
+    task: det
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/a1000/yolov5m-a1000/yolov5m.sdag.bin
+    variant: yolov5m
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 568d9bbe20aa1cf0a5ec8fc720c572afefe5cb6d1217a7229a4b725aa3c12ebf
+  - filename: model/a1000/yolov5m-a1000/weights.bin
+    variant: yolov5m
+    platform: a1000
+    task: det
+    format: weights
+    sha256: 51bb6999574cc5596b478ecdd289f852f6ca42302a3af4e4a13beb68d3cca310
+  - filename: model/c1200/yolov5m-c1200/yolov5m.meta
+    variant: yolov5m
+    platform: c1200
+    task: yolov5m
+    format: meta
+    sha256: d81a2b6d94459e70f7285036dfe9bc2bd7dbbcdcb9dfdae685d078063c61d7f1
+  - filename: model/c1200/yolov5m-c1200/yolov5m.ModelGraph.bin
+    variant: yolov5m
+    platform: c1200
+    task: yolov5m
+    format: bin
+    sha256: 482dcff259a53f99946de2242ea5a1c8b1a0f51d18b249dfbe6ed7378cd3034f
+  - filename: model/c1200/yolov5m-c1200/yolov5m.ModelGraph.bin.txt
+    variant: yolov5m
+    platform: c1200
+    task: yolov5m
+    format: txt
+    sha256: b8dc809ca963b4a3227d9d50ffde828f12dca95290ffdb62fea32fee7ecf2959
+  - filename: model/c1200/yolov5m-c1200/yolov5m.sdag.bin
+    variant: yolov5m
+    platform: c1200
+    task: yolov5m
+    format: bin
+    sha256: 1a803864a56d9e375fc5b1c515f285eb5875df07db382f9f98ecd27b9f12d1b5
+  - filename: model/c1200/yolov5m-c1200/weights.bin
+    variant: yolov5m
+    platform: c1200
+    task: yolov5m
+    format: weights
+    sha256: 469d99f5e3d5f927423d6de19d7d2bd0ea7e080db1877fa9fd8b741cad7e9a11
 - id: fcos
   sample_path: samples/vision/fcos
-  download_script: samples/vision/fcos/model/download.sh
   assets:
   - filename: fcos.Enrsd.bin
     variant: fcos
     task: det
     format: bin
     sha256: 1b1ea605bea234bb16ca28716caaa7abbe153ef665fda7a59920d2bbd95399cc
+  - filename: model/a1000/fcos-a1000/fcos.meta
+    variant: fcos
+    platform: a1000
+    task: det
+    format: meta
+    sha256: 9c11107c50380f2611ff23f92f41aa4b247bf8a997289fc60e812c20c3ae1eb3
+  - filename: model/a1000/fcos-a1000/fcos.ModelGraph.bin
+    variant: fcos
+    platform: a1000
+    task: det
+    format: bin
+    sha256: ecf7a9d46ae202a3c0bf9348d6d9ff06ff2a4f7f856bcb307cdc8760ad85ef0d
+  - filename: model/a1000/fcos-a1000/fcos.ModelGraph.bin.txt
+    variant: fcos
+    platform: a1000
+    task: det
+    format: txt
+    sha256: abcee167302ef10b552c2a6acd4b7eeba333941cdafae7c505a61c614d972545
+  - filename: model/a1000/fcos-a1000/fcos.sdag.bin
+    variant: fcos
+    platform: a1000
+    task: det
+    format: bin
+    sha256: 12531dbff641076329e93f8749309825ee2a5e2590c64c3108d951f253851252
+  - filename: model/a1000/fcos-a1000/weights.bin
+    variant: fcos
+    platform: a1000
+    task: det
+    format: weights
+    sha256: 1b513ae6fba3ea3e07ee78bb70d318b3920250d75d75cd3abb6e5ec6d0187118
+  - filename: model/c1200/fcos-c1200/fcos.meta
+    variant: fcos
+    platform: c1200
+    task: det
+    format: meta
+    sha256: c6263237892533957c7767cf2914c5d047173e6ed8898aeda3a2270c4eee3372
+  - filename: model/c1200/fcos-c1200/fcos.ModelGraph.bin
+    variant: fcos
+    platform: c1200
+    task: det
+    format: bin
+    sha256: ecf7a9d46ae202a3c0bf9348d6d9ff06ff2a4f7f856bcb307cdc8760ad85ef0d
+  - filename: model/c1200/fcos-c1200/fcos.ModelGraph.bin.txt
+    variant: fcos
+    platform: c1200
+    task: det
+    format: txt
+    sha256: abcee167302ef10b552c2a6acd4b7eeba333941cdafae7c505a61c614d972545
+  - filename: model/c1200/fcos-c1200/fcos.sdag.bin
+    variant: fcos
+    platform: c1200
+    task: det
+    format: bin
+    sha256: 8777f33cafe08be2c76a2044f3c5125a1b40fc257b3d0bed109c2bf825ef7aad
+  - filename: model/c1200/fcos-c1200/weights.bin
+    variant: fcos
+    platform: c1200
+    task: det
+    format: weights
+    sha256: 2d372ec7a86a0d794da3159bbb72e66cf00bf2ab9b8dffa528ddcb43401b66c8
 - id: classification
   sample_path: samples/vision/classification
-  download_script: samples/vision/classification/model/download.sh
   assets:
   - filename: fcos.Enrsd.bin
     variant: resnet18
@@ -88,41 +566,457 @@ models:
     task: cls
     format: bin
     sha256: 19328b06b3e5237e114d956a7a44826c18300b03d15d179aaecdd93ae667479a
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.meta
+    variant: mobilenetv2
+    platform: a1000
+    task: cls
+    format: meta
+    sha256: 9160b4c467a939689d4bcfeec2395c29cc2015d0db5be1f53e5c9836e940c560
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.ModelGraph.bin
+    variant: mobilenetv2
+    platform: a1000
+    task: cls
+    format: bin
+    sha256: bfad4020b9e4489129fac7775a1e6af2d8dad6419671103a7db2712247825c08
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.ModelGraph.bin.txt
+    variant: mobilenetv2
+    platform: a1000
+    task: cls
+    format: txt
+    sha256: f9f55ecc3dc81ac44e66051fa8c3a246cb6d36961e4ed7f5a3b3e3d8443b4bd5
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.sdag.bin
+    variant: mobilenetv2
+    platform: a1000
+    task: cls
+    format: bin
+    sha256: 4c0df8e3645c6c165f57d2fb9868df95a266eae360530f01587912b28e2970a2
+  - filename: model/a1000/mobilenetv2-a1000/weights.bin
+    variant: mobilenetv2
+    platform: a1000
+    task: cls
+    format: weights
+    sha256: 9051d5ec03bf89a64b6db75f2513154a2fd4dce21a9bef212f1ad9fad018e8e0
+  - filename: model/a1000/resnet18-a1000/resnet18.meta
+    variant: resnet18
+    platform: a1000
+    task: cls
+    format: meta
+    sha256: af83c3a7c796bff85f44bdbfbf95fb9d6e7e6fb7a6c1ffa896a0718decc33ddd
+  - filename: model/a1000/resnet18-a1000/resnet18.ModelGraph.bin
+    variant: resnet18
+    platform: a1000
+    task: cls
+    format: bin
+    sha256: bfad4020b9e4489129fac7775a1e6af2d8dad6419671103a7db2712247825c08
+  - filename: model/a1000/resnet18-a1000/resnet18.ModelGraph.bin.txt
+    variant: resnet18
+    platform: a1000
+    task: cls
+    format: txt
+    sha256: f9f55ecc3dc81ac44e66051fa8c3a246cb6d36961e4ed7f5a3b3e3d8443b4bd5
+  - filename: model/a1000/resnet18-a1000/resnet18.sdag.bin
+    variant: resnet18
+    platform: a1000
+    task: cls
+    format: bin
+    sha256: 23dcf7ec2b7c690b36c9bf3a9f34f96ca7eb35583293ffd78278882c5dd53146
+  - filename: model/a1000/resnet18-a1000/weights.bin
+    variant: resnet18
+    platform: a1000
+    task: cls
+    format: weights
+    sha256: 88b3c628363e527c046b5d2eb68b96b865156c484f5bc78bb37a419c477e5c4a
+  - filename: model/a1000/resnet34-a1000/resnet34.meta
+    variant: resnet34
+    platform: a1000
+    task: cls
+    format: meta
+    sha256: da0918e57c335d5026046ff1f69a90bc48edc8ee9c5726a5d2033043decc58f1
+  - filename: model/a1000/resnet34-a1000/resnet34.ModelGraph.bin
+    variant: resnet34
+    platform: a1000
+    task: cls
+    format: bin
+    sha256: bfad4020b9e4489129fac7775a1e6af2d8dad6419671103a7db2712247825c08
+  - filename: model/a1000/resnet34-a1000/resnet34.ModelGraph.bin.txt
+    variant: resnet34
+    platform: a1000
+    task: cls
+    format: txt
+    sha256: f9f55ecc3dc81ac44e66051fa8c3a246cb6d36961e4ed7f5a3b3e3d8443b4bd5
+  - filename: model/a1000/resnet34-a1000/resnet34.sdag.bin
+    variant: resnet34
+    platform: a1000
+    task: cls
+    format: bin
+    sha256: 1deec059def2ac68129ab83716aee3ee805613c1e8cbb0f4d1586cd738b31271
+  - filename: model/a1000/resnet34-a1000/weights.bin
+    variant: resnet34
+    platform: a1000
+    task: cls
+    format: weights
+    sha256: 25779b089bfbdc947c634e2f78688e2eab69ac1dbadaafb02228100ce70dce52
+  - filename: model/c1200/mobilenetv2-c1200/mobilenetv2.meta
+    variant: mobilenetv2
+    platform: c1200
+    task: cls
+    format: meta
+    sha256: 1639e8ec83159c5823757b9970a58dd712a21e3840b9c0c129829bda634c66fa
+  - filename: model/c1200/mobilenetv2-c1200/mobilenetv2.ModelGraph.bin
+    variant: mobilenetv2
+    platform: c1200
+    task: cls
+    format: bin
+    sha256: bfad4020b9e4489129fac7775a1e6af2d8dad6419671103a7db2712247825c08
+  - filename: model/c1200/mobilenetv2-c1200/mobilenetv2.ModelGraph.bin.txt
+    variant: mobilenetv2
+    platform: c1200
+    task: cls
+    format: txt
+    sha256: f9f55ecc3dc81ac44e66051fa8c3a246cb6d36961e4ed7f5a3b3e3d8443b4bd5
+  - filename: model/c1200/mobilenetv2-c1200/mobilenetv2.sdag.bin
+    variant: mobilenetv2
+    platform: c1200
+    task: cls
+    format: bin
+    sha256: 2d141f6ac5c6de0d0193bc5787ef9baf134eab21e62adfdcb7ce9438cbe487f2
+  - filename: model/c1200/mobilenetv2-c1200/weights.bin
+    variant: mobilenetv2
+    platform: c1200
+    task: cls
+    format: weights
+    sha256: f3fc7a23aaa5fdb72b0d3b667f09144a52c8df5a31892aadcbfb9e42e7b87e35
+  - filename: model/c1200/resnet18-c1200/resnet18.meta
+    variant: resnet18
+    platform: c1200
+    task: cls
+    format: meta
+    sha256: fb46591352dcfb31341a196af674bcb1bfdf7141181ead16d685c5fbce8b0d10
+  - filename: model/c1200/resnet18-c1200/resnet18.ModelGraph.bin
+    variant: resnet18
+    platform: c1200
+    task: cls
+    format: bin
+    sha256: bfad4020b9e4489129fac7775a1e6af2d8dad6419671103a7db2712247825c08
+  - filename: model/c1200/resnet18-c1200/resnet18.ModelGraph.bin.txt
+    variant: resnet18
+    platform: c1200
+    task: cls
+    format: txt
+    sha256: f9f55ecc3dc81ac44e66051fa8c3a246cb6d36961e4ed7f5a3b3e3d8443b4bd5
+  - filename: model/c1200/resnet18-c1200/resnet18.sdag.bin
+    variant: resnet18
+    platform: c1200
+    task: cls
+    format: bin
+    sha256: 69e501ffdd6b8859495509fe282764d064af74d2ab331b503a1c98b494e0008c
+  - filename: model/c1200/resnet18-c1200/weights.bin
+    variant: resnet18
+    platform: c1200
+    task: cls
+    format: weights
+    sha256: 0eddf548b22c399afcb249bf04a9a0e4168f5e3beee5171f8be7ec76f347806d
+  - filename: model/c1200/resnet34-c1200/resnet34.meta
+    variant: resnet34
+    platform: c1200
+    task: cls
+    format: meta
+    sha256: b7767ab968cd4a1343de36ee86bbcf182fa6c65cbb4fd97cbbec958fc11ca2b9
+  - filename: model/c1200/resnet34-c1200/resnet34.ModelGraph.bin
+    variant: resnet34
+    platform: c1200
+    task: cls
+    format: bin
+    sha256: bfad4020b9e4489129fac7775a1e6af2d8dad6419671103a7db2712247825c08
+  - filename: model/c1200/resnet34-c1200/resnet34.ModelGraph.bin.txt
+    variant: resnet34
+    platform: c1200
+    task: cls
+    format: txt
+    sha256: f9f55ecc3dc81ac44e66051fa8c3a246cb6d36961e4ed7f5a3b3e3d8443b4bd5
+  - filename: model/c1200/resnet34-c1200/resnet34.sdag.bin
+    variant: resnet34
+    platform: c1200
+    task: cls
+    format: bin
+    sha256: 997ed8e9dbdf800aa4b486cb968c94e7f4e4548cb583334429c2ca84b412786a
+  - filename: model/c1200/resnet34-c1200/weights.bin
+    variant: resnet34
+    platform: c1200
+    task: cls
+    format: weights
+    sha256: 5231e75ed784f732160b728074d8700d7dc8eca584bf72dfabea327a60fbd176
 - id: condlanenet
   sample_path: samples/vision/condlanenet
-  download_script: samples/vision/condlanenet/model/download.sh
   assets:
   - filename: condlanenet.sdag.bin
     variant: condlanenet
     task: lane
     format: bin
     sha256: a9f20983d8f8895253dc8057d0f2bd1d91647a6952e793aa85cb3180b6e24f62
+  - filename: model/a1000/condlanenet-a1000/condlanenet.meta
+    variant: condlanenet
+    platform: a1000
+    task: lane
+    format: meta
+    sha256: 35314d14fb20b97a28f4a290c4713a7712052df21f2c47f20019f72c716640cf
+  - filename: model/a1000/condlanenet-a1000/condlanenet.ModelGraph.bin
+    variant: condlanenet
+    platform: a1000
+    task: lane
+    format: bin
+    sha256: 6192c7bcdde82a5deba001c5114bc66e56a1abae61020d89010bc6792d4892c8
+  - filename: model/a1000/condlanenet-a1000/condlanenet.ModelGraph.bin.txt
+    variant: condlanenet
+    platform: a1000
+    task: lane
+    format: txt
+    sha256: 989401dccd005491d9b4e9f8602ab634d81f753f6ce2e7543923ac1d9e1282b7
+  - filename: model/a1000/condlanenet-a1000/condlanenet.sdag.bin
+    variant: condlanenet
+    platform: a1000
+    task: lane
+    format: bin
+    sha256: fe86cf05f8260b4d92333b5acd7f3b3828ccf81f9b5f35c4a2d0627efc4938f9
+  - filename: model/a1000/condlanenet-a1000/weights.bin
+    variant: condlanenet
+    platform: a1000
+    task: lane
+    format: weights
+    sha256: 6006c2cb337b0cad552512be43076199e22f094420b8d86bb4bb4b6f6591d1d1
+  - filename: model/c1200/condlanenet-c1200/condlanenet.meta
+    variant: condlanenet
+    platform: c1200
+    task: condlanenet
+    format: meta
+    sha256: e9027dc4a7100e0496a1eed857ac14f3bc09e2747c9818f2854bcd871c9eb5cd
+  - filename: model/c1200/condlanenet-c1200/condlanenet.ModelGraph.bin
+    variant: condlanenet
+    platform: c1200
+    task: condlanenet
+    format: bin
+    sha256: ed2c4a93ef61dcdd6631b81c10928f12bfc6ac7db7c07654b1c52c948c370ce3
+  - filename: model/c1200/condlanenet-c1200/condlanenet.ModelGraph.bin.txt
+    variant: condlanenet
+    platform: c1200
+    task: condlanenet
+    format: txt
+    sha256: 515ce3bfd9ccaf09a47682af86a5763e5019b896d592d0662054bfc46af78d26
+  - filename: model/c1200/condlanenet-c1200/condlanenet.sdag.bin
+    variant: condlanenet
+    platform: c1200
+    task: condlanenet
+    format: bin
+    sha256: a9f20983d8f8895253dc8057d0f2bd1d91647a6952e793aa85cb3180b6e24f62
+  - filename: model/c1200/condlanenet-c1200/weights.bin
+    variant: condlanenet
+    platform: c1200
+    task: condlanenet
+    format: weights
+    sha256: a4921d78effb8db961e0e3a013bae3de03f124790a8ce141541fb34ce39b7825
 - id: openstereo2
   sample_path: samples/vision/openstereo2
-  download_script: samples/vision/openstereo2/model/download.sh
   assets:
   - filename: lightstereo.sdag.bin
     variant: lightstereo
     task: stereo
     format: bin
-    sha256: a94702cea1ef092a0def2fb8de8bdf2854999984e6cfc7ca5ba42aeaa43e3d75
+    sha256: c2b488f69344d937d90f639c3a561a913795cc38a8153584b01f840d6c50486d
+  - filename: model/a1000/lightstereo-a1000/lightstereo.meta
+    variant: lightstereo
+    platform: a1000
+    task: stereo
+    format: meta
+    sha256: 6d993100bd23eba71b06dbf28385f3823e3b9249aa9aa3b5004808201dab9a45
+  - filename: model/a1000/lightstereo-a1000/lightstereo.ModelGraph.bin
+    variant: lightstereo
+    platform: a1000
+    task: stereo
+    format: bin
+    sha256: 785ae5994917f00eb44852daf6ae4037265b6406d501c72b444232886e0369f3
+  - filename: model/a1000/lightstereo-a1000/lightstereo.ModelGraph.bin.txt
+    variant: lightstereo
+    platform: a1000
+    task: stereo
+    format: txt
+    sha256: 7604ed27531c6c53cdc8fa9722062bbabcc1eca1651719f31f2875e5990a9f53
+  - filename: model/a1000/lightstereo-a1000/lightstereo.sdag.bin
+    variant: lightstereo
+    platform: a1000
+    task: stereo
+    format: bin
+    sha256: f8f36b8025e905da969c4d34b71033584555c5747cdc68fa1ad11acd4be67871
+  - filename: model/a1000/lightstereo-a1000/weights.bin
+    variant: lightstereo
+    platform: a1000
+    task: stereo
+    format: weights
+    sha256: ebd4c48634d0f033107cec4adc3fb362519d63afe32fed5eabb8eba88b46fe7a
+  - filename: model/c1200/lightstereo-c1200/lightstereo.meta
+    variant: lightstereo
+    platform: c1200
+    task: lightstereo
+    format: meta
+    sha256: 959703892e3bcdc1afddcc546b122ae6a5dfa0b68160d53af3aa92dad6d8a1ca
+  - filename: model/c1200/lightstereo-c1200/lightstereo.ModelGraph.bin
+    variant: lightstereo
+    platform: c1200
+    task: lightstereo
+    format: bin
+    sha256: 0cf0604569363fb52d753dbc6dc6e6365a3314527ce60c1ff3405296e2be88ca
+  - filename: model/c1200/lightstereo-c1200/lightstereo.ModelGraph.bin.txt
+    variant: lightstereo
+    platform: c1200
+    task: lightstereo
+    format: txt
+    sha256: dc36a6a88fa67731b4453b296822680846582619b74ded969c1c74d2fb580eed
+  - filename: model/c1200/lightstereo-c1200/lightstereo.sdag.bin
+    variant: lightstereo
+    platform: c1200
+    task: lightstereo
+    format: bin
+    sha256: a34bd5782fbf9743e54d5dfc84e4635fcec86b1a5871b4d7378a7993de83a95a
+  - filename: model/c1200/lightstereo-c1200/weights.bin
+    variant: lightstereo
+    platform: c1200
+    task: lightstereo
+    format: weights
+    sha256: a747ac68864cd01eb6604dc471f7c72a84089fc853e4eeab02ed2f84b1e54759
 - id: landmark
   sample_path: samples/vision/landmark
-  download_script: samples/vision/landmark/model/download.sh
   assets:
   - filename: landmark.Enrsd.bin
     variant: size56
     task: face-landmark
     format: bin
     sha256: cbf423619b0d6d05461567188eadd8eca455b0301bbe60e61ae8667a9d1ca905
-  - filename: landmark.Enrsd.bin  # size224 variant (per-variant directory)
+  - filename: landmark.Enrsd.bin
     variant: size224
     task: face-landmark
     format: bin
     sha256: f4fbd549ca4903993e5fcf69e28530202aad76be4af9b742b2bcac247d62c386
+  - filename: model/a1000/size224-a1000/landmark.meta
+    variant: size224
+    platform: a1000
+    task: face-landmark
+    format: meta
+    sha256: 9628efd7d698659fdf52fe8d6eba47c67295ecd44ff6f083de107bd6ff45d34d
+  - filename: model/a1000/size224-a1000/landmark.ModelGraph.bin
+    variant: size224
+    platform: a1000
+    task: face-landmark
+    format: bin
+    sha256: ecf7a9d46ae202a3c0bf9348d6d9ff06ff2a4f7f856bcb307cdc8760ad85ef0d
+  - filename: model/a1000/size224-a1000/landmark.ModelGraph.bin.txt
+    variant: size224
+    platform: a1000
+    task: face-landmark
+    format: txt
+    sha256: abcee167302ef10b552c2a6acd4b7eeba333941cdafae7c505a61c614d972545
+  - filename: model/a1000/size224-a1000/landmark.sdag.bin
+    variant: size224
+    platform: a1000
+    task: face-landmark
+    format: bin
+    sha256: 953ee43f818d68db17cae0c24730d8f48b559427d5e79cb532c8fa584b236cd5
+  - filename: model/a1000/size224-a1000/weights.bin
+    variant: size224
+    platform: a1000
+    task: face-landmark
+    format: weights
+    sha256: 8f2e7d4c0e8795438fb46a8b8182a5b88dc2b483e95c57d16c6ce83eb1b302e7
+  - filename: model/a1000/size56-a1000/landmark.meta
+    variant: size56
+    platform: a1000
+    task: face-landmark
+    format: meta
+    sha256: f8204714d6b7165be71ec1462563954fcd170b1904d4e2662b8394364838d1e2
+  - filename: model/a1000/size56-a1000/landmark.ModelGraph.bin
+    variant: size56
+    platform: a1000
+    task: face-landmark
+    format: bin
+    sha256: ecf7a9d46ae202a3c0bf9348d6d9ff06ff2a4f7f856bcb307cdc8760ad85ef0d
+  - filename: model/a1000/size56-a1000/landmark.ModelGraph.bin.txt
+    variant: size56
+    platform: a1000
+    task: face-landmark
+    format: txt
+    sha256: abcee167302ef10b552c2a6acd4b7eeba333941cdafae7c505a61c614d972545
+  - filename: model/a1000/size56-a1000/landmark.sdag.bin
+    variant: size56
+    platform: a1000
+    task: face-landmark
+    format: bin
+    sha256: 34f8ab3f57f1faf55ebffec868af85c2df95eb3d545d102428c08459f71a9852
+  - filename: model/a1000/size56-a1000/weights.bin
+    variant: size56
+    platform: a1000
+    task: face-landmark
+    format: weights
+    sha256: e9917fd9eeea740a9860071c4fb15929a0eaf17ab2da4ca73df729f12550e54c
+  - filename: model/c1200/size224-c1200/landmark.meta
+    variant: size224
+    platform: c1200
+    task: face-landmark
+    format: meta
+    sha256: 1df6d4dcb9f0c580ff001af0de5c469326755e76536e9d760ca3807036b321b3
+  - filename: model/c1200/size224-c1200/landmark.ModelGraph.bin
+    variant: size224
+    platform: c1200
+    task: face-landmark
+    format: bin
+    sha256: ecf7a9d46ae202a3c0bf9348d6d9ff06ff2a4f7f856bcb307cdc8760ad85ef0d
+  - filename: model/c1200/size224-c1200/landmark.ModelGraph.bin.txt
+    variant: size224
+    platform: c1200
+    task: face-landmark
+    format: txt
+    sha256: abcee167302ef10b552c2a6acd4b7eeba333941cdafae7c505a61c614d972545
+  - filename: model/c1200/size224-c1200/landmark.sdag.bin
+    variant: size224
+    platform: c1200
+    task: face-landmark
+    format: bin
+    sha256: 49a766cc59c5d18bebdc1467cac5a9763a310454f3a7a1f323679070800e80cd
+  - filename: model/c1200/size224-c1200/weights.bin
+    variant: size224
+    platform: c1200
+    task: face-landmark
+    format: weights
+    sha256: b6a575b6dab5171a84951b7c0ee98329a13e9bbfc06b11e8eb4d20f782e6b6c0
+  - filename: model/c1200/size56-c1200/landmark.meta
+    variant: size56
+    platform: c1200
+    task: face-landmark
+    format: meta
+    sha256: 5a37de09d73d466b164c8e6ba11d229529bcbbd9c47af90e86c65f27cc9748d6
+  - filename: model/c1200/size56-c1200/landmark.ModelGraph.bin
+    variant: size56
+    platform: c1200
+    task: face-landmark
+    format: bin
+    sha256: ecf7a9d46ae202a3c0bf9348d6d9ff06ff2a4f7f856bcb307cdc8760ad85ef0d
+  - filename: model/c1200/size56-c1200/landmark.ModelGraph.bin.txt
+    variant: size56
+    platform: c1200
+    task: face-landmark
+    format: txt
+    sha256: abcee167302ef10b552c2a6acd4b7eeba333941cdafae7c505a61c614d972545
+  - filename: model/c1200/size56-c1200/landmark.sdag.bin
+    variant: size56
+    platform: c1200
+    task: face-landmark
+    format: bin
+    sha256: 4d680a949e3ad13129de72e09c8e462803635df5fec3f6318bddb1f8e493e37e
+  - filename: model/c1200/size56-c1200/weights.bin
+    variant: size56
+    platform: c1200
+    task: face-landmark
+    format: weights
+    sha256: a0aa0d329dfefe6bae836714f6f79b71e97ac9eddd1851ae6b6ecaece8f33bcc
 - id: reid
   sample_path: samples/vision/reid
-  download_script: samples/vision/reid/model/download.sh
   assets:
   - filename: reid.Enrsd.bin
     variant: mobilenetv2
@@ -139,9 +1033,188 @@ models:
     task: reid
     format: bin
     sha256: 0b0808c368d632d84e39320ee204ef75b1301e2363937463e42caa38c8ddded4
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.meta
+    variant: mobilenetv2
+    platform: a1000
+    task: reid
+    format: meta
+    sha256: 8dcd3ff125da00acc624fc58b2a1d31614d4ea730b88a0e68e02f4306dec945f
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.ModelGraph.bin
+    variant: mobilenetv2
+    platform: a1000
+    task: reid
+    format: bin
+    sha256: bfad4020b9e4489129fac7775a1e6af2d8dad6419671103a7db2712247825c08
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.ModelGraph.bin.txt
+    variant: mobilenetv2
+    platform: a1000
+    task: reid
+    format: txt
+    sha256: f9f55ecc3dc81ac44e66051fa8c3a246cb6d36961e4ed7f5a3b3e3d8443b4bd5
+  - filename: model/a1000/mobilenetv2-a1000/mobilenetv2.sdag.bin
+    variant: mobilenetv2
+    platform: a1000
+    task: reid
+    format: bin
+    sha256: 9e60e6fa98129b3117488bfb4d775823e93fd82cb02c4f7412c3972f1672e36a
+  - filename: model/a1000/mobilenetv2-a1000/weights.bin
+    variant: mobilenetv2
+    platform: a1000
+    task: reid
+    format: weights
+    sha256: 12252bbab1141fb13609365c793e2f60026ecfa53f459956704ddb164f932aff
+  - filename: model/a1000/osnet-a1000/reid.meta
+    variant: osnet
+    platform: a1000
+    task: reid
+    format: meta
+    sha256: 3f03d947466131f5f01b5fe6339ab3b6962fbf791fd2aa60ea52582b6dfeea70
+  - filename: model/a1000/osnet-a1000/reid.ModelGraph.bin
+    variant: osnet
+    platform: a1000
+    task: reid
+    format: bin
+    sha256: 93f4d3178647ae1b3199da5204dd646aeb340c60f20ea2e9710f70ea30f675e3
+  - filename: model/a1000/osnet-a1000/reid.ModelGraph.bin.txt
+    variant: osnet
+    platform: a1000
+    task: reid
+    format: txt
+    sha256: 0878b83a303ac8cf3da066688206cf681521275f7cbdf2556e86c27a457fc3c4
+  - filename: model/a1000/osnet-a1000/reid.sdag.bin
+    variant: osnet
+    platform: a1000
+    task: reid
+    format: bin
+    sha256: 9be2745ae8aaaba98f4345ae77267f2cb9514fa0119576367c163e50786ebfea
+  - filename: model/a1000/osnet-a1000/weights.bin
+    variant: osnet
+    platform: a1000
+    task: reid
+    format: weights
+    sha256: 31736b354bbd83d6860d0e0d6fd99a21b32f6d84b1e12d674bd4077213222019
+  - filename: model/a1000/resnet50-a1000/reid.meta
+    variant: resnet50
+    platform: a1000
+    task: reid
+    format: meta
+    sha256: c86056c0f1e0cbd96e0fde8b1e7df76b4c5cbe0241c91e8a75b719e014fdbeeb
+  - filename: model/a1000/resnet50-a1000/reid.ModelGraph.bin
+    variant: resnet50
+    platform: a1000
+    task: reid
+    format: bin
+    sha256: 261f108643d8fbdc3e258e411e18231b72ba9f52b1caa26b52abc168631bbed5
+  - filename: model/a1000/resnet50-a1000/reid.ModelGraph.bin.txt
+    variant: resnet50
+    platform: a1000
+    task: reid
+    format: txt
+    sha256: 107b786b468828a4552cd86797f056edb5b7c918860fe90e35f1b913ae4bee1e
+  - filename: model/a1000/resnet50-a1000/reid.sdag.bin
+    variant: resnet50
+    platform: a1000
+    task: reid
+    format: bin
+    sha256: 59c6df6f954144018d7884d5e19cef46b2dd75b73c0387473df2b709392f3e78
+  - filename: model/a1000/resnet50-a1000/weights.bin
+    variant: resnet50
+    platform: a1000
+    task: reid
+    format: weights
+    sha256: 5f939f571033f01bf87f3627da5fc475277271986a5498577dcf45729afa22e6
+  - filename: model/c1200/mobilenetv2-c1200/reid.meta
+    variant: mobilenetv2
+    platform: c1200
+    task: reid
+    format: meta
+    sha256: 788eb7f0c10dd9490a89cdb3f38584d80d4c854a39b3a5de05a5725685fc7d23
+  - filename: model/c1200/mobilenetv2-c1200/reid.ModelGraph.bin
+    variant: mobilenetv2
+    platform: c1200
+    task: reid
+    format: bin
+    sha256: 261f108643d8fbdc3e258e411e18231b72ba9f52b1caa26b52abc168631bbed5
+  - filename: model/c1200/mobilenetv2-c1200/reid.ModelGraph.bin.txt
+    variant: mobilenetv2
+    platform: c1200
+    task: reid
+    format: txt
+    sha256: 107b786b468828a4552cd86797f056edb5b7c918860fe90e35f1b913ae4bee1e
+  - filename: model/c1200/mobilenetv2-c1200/reid.sdag.bin
+    variant: mobilenetv2
+    platform: c1200
+    task: reid
+    format: bin
+    sha256: 0bc89f370100b2a3dc60a9195471f127a819d45287d0c22f32c81e57278c5382
+  - filename: model/c1200/mobilenetv2-c1200/weights.bin
+    variant: mobilenetv2
+    platform: c1200
+    task: reid
+    format: weights
+    sha256: 6874a0a87bfad334d2f51d2ec459cd3f6486d18d9e12a62e89287f825495f0a2
+  - filename: model/c1200/osnet-c1200/reid.meta
+    variant: osnet
+    platform: c1200
+    task: reid
+    format: meta
+    sha256: 382f07676e0b602dcfdfd6318063f5289516bd5d71772a33af90de3785495112
+  - filename: model/c1200/osnet-c1200/reid.ModelGraph.bin
+    variant: osnet
+    platform: c1200
+    task: reid
+    format: bin
+    sha256: 93f4d3178647ae1b3199da5204dd646aeb340c60f20ea2e9710f70ea30f675e3
+  - filename: model/c1200/osnet-c1200/reid.ModelGraph.bin.txt
+    variant: osnet
+    platform: c1200
+    task: reid
+    format: txt
+    sha256: 0878b83a303ac8cf3da066688206cf681521275f7cbdf2556e86c27a457fc3c4
+  - filename: model/c1200/osnet-c1200/reid.sdag.bin
+    variant: osnet
+    platform: c1200
+    task: reid
+    format: bin
+    sha256: bd4a1688825dd8ade3832cf827dca1ca63080d45b99fd8fad4306a3c1d58fb16
+  - filename: model/c1200/osnet-c1200/weights.bin
+    variant: osnet
+    platform: c1200
+    task: reid
+    format: weights
+    sha256: 719b09800b18771835ad3280feaaee6fc5959d825b1849ac06a2c345d6d64ea5
+  - filename: model/c1200/resnet50-c1200/reid.meta
+    variant: resnet50
+    platform: c1200
+    task: reid
+    format: meta
+    sha256: fdac846dc466524816f52a73f7e1eb78d2d5ccb77904340c4c14c33e30e86b88
+  - filename: model/c1200/resnet50-c1200/reid.ModelGraph.bin
+    variant: resnet50
+    platform: c1200
+    task: reid
+    format: bin
+    sha256: 261f108643d8fbdc3e258e411e18231b72ba9f52b1caa26b52abc168631bbed5
+  - filename: model/c1200/resnet50-c1200/reid.ModelGraph.bin.txt
+    variant: resnet50
+    platform: c1200
+    task: reid
+    format: txt
+    sha256: 107b786b468828a4552cd86797f056edb5b7c918860fe90e35f1b913ae4bee1e
+  - filename: model/c1200/resnet50-c1200/reid.sdag.bin
+    variant: resnet50
+    platform: c1200
+    task: reid
+    format: bin
+    sha256: 8254491cb0e3cacd190c45e24bfc9feb1efb33102edd1db7d6f9f0abe8f5e85a
+  - filename: model/c1200/resnet50-c1200/weights.bin
+    variant: resnet50
+    platform: c1200
+    task: reid
+    format: weights
+    sha256: bd81f013954515a26a941be4f50bd5b7d4ac0fb9aec876c6c6cf5cb1fda67647
 - id: unet-seg
   sample_path: samples/vision/unet-seg
-  download_script: samples/vision/unet-seg/model/download.sh
   assets:
   - filename: reid.Enrsd.bin
     variant: unet_512x512
@@ -153,3 +1226,123 @@ models:
     task: seg
     format: bin
     sha256: 933c00b5e4f9e510cbea7763fa9f34eea4da6521c017f991b495d5365d16f26d
+  - filename: model/a1000/unet_512x512-a1000/unet_512x512.meta
+    variant: unet_512x512
+    platform: a1000
+    task: seg
+    format: meta
+    sha256: 88b4ab7310ba469418de9d72043bec46999be8d65c36597577c5342f0d1fc4eb
+  - filename: model/a1000/unet_512x512-a1000/unet_512x512.ModelGraph.bin
+    variant: unet_512x512
+    platform: a1000
+    task: seg
+    format: bin
+    sha256: 0e8dde3e28b7a9f320b97595c53063b8f0078502540f525ae4467aa33e3eb4f7
+  - filename: model/a1000/unet_512x512-a1000/unet_512x512.ModelGraph.bin.txt
+    variant: unet_512x512
+    platform: a1000
+    task: seg
+    format: txt
+    sha256: 965e63a44ae1ca7f4738da99c1a15c0dae3d4b3d639a17c898d6137033c59ca8
+  - filename: model/a1000/unet_512x512-a1000/unet_512x512.sdag.bin
+    variant: unet_512x512
+    platform: a1000
+    task: seg
+    format: bin
+    sha256: ed44bbf2df27c02b1acac83392223f57a43165a111bf5d5fee4656a06261ac6e
+  - filename: model/a1000/unet_512x512-a1000/weights.bin
+    variant: unet_512x512
+    platform: a1000
+    task: seg
+    format: weights
+    sha256: 896a2605ea19c78fb64118e410f3e69aa46a6d8705e8e76e2a02c6315d15bf64
+  - filename: model/a1000/unet_512x1024-a1000/unet_512x1024.meta
+    variant: unet_512x1024
+    platform: a1000
+    task: seg
+    format: meta
+    sha256: c68120028acf5db154a4d29f67187bd29d5c914e0f30df01744178b56116dcfa
+  - filename: model/a1000/unet_512x1024-a1000/unet_512x1024.ModelGraph.bin
+    variant: unet_512x1024
+    platform: a1000
+    task: seg
+    format: bin
+    sha256: 0e8dde3e28b7a9f320b97595c53063b8f0078502540f525ae4467aa33e3eb4f7
+  - filename: model/a1000/unet_512x1024-a1000/unet_512x1024.ModelGraph.bin.txt
+    variant: unet_512x1024
+    platform: a1000
+    task: seg
+    format: txt
+    sha256: 965e63a44ae1ca7f4738da99c1a15c0dae3d4b3d639a17c898d6137033c59ca8
+  - filename: model/a1000/unet_512x1024-a1000/unet_512x1024.sdag.bin
+    variant: unet_512x1024
+    platform: a1000
+    task: seg
+    format: bin
+    sha256: a8ceadfdfa98de7bf695fbb6e6a9ae72c1f7cc7a5925021b25c918c09161353b
+  - filename: model/a1000/unet_512x1024-a1000/weights.bin
+    variant: unet_512x1024
+    platform: a1000
+    task: seg
+    format: weights
+    sha256: 65c64eccab7670c7684bb4891467959968a9e650a4bfd45301a3d30beadb1dc9
+  - filename: model/c1200/unet_512x1024-c1200/unet_512x1024.meta
+    variant: unet_512x1024
+    platform: c1200
+    task: seg
+    format: meta
+    sha256: 05c440e91f59433ff98a64440b725b4ac0dcabc7b8e26d609d9184555ee7455c
+  - filename: model/c1200/unet_512x1024-c1200/unet_512x1024.ModelGraph.bin
+    variant: unet_512x1024
+    platform: c1200
+    task: seg
+    format: bin
+    sha256: 0e8dde3e28b7a9f320b97595c53063b8f0078502540f525ae4467aa33e3eb4f7
+  - filename: model/c1200/unet_512x1024-c1200/unet_512x1024.ModelGraph.bin.txt
+    variant: unet_512x1024
+    platform: c1200
+    task: seg
+    format: txt
+    sha256: 965e63a44ae1ca7f4738da99c1a15c0dae3d4b3d639a17c898d6137033c59ca8
+  - filename: model/c1200/unet_512x1024-c1200/unet_512x1024.sdag.bin
+    variant: unet_512x1024
+    platform: c1200
+    task: seg
+    format: bin
+    sha256: 9a01b9f35ffb10693208bd07abe834bc5ca85776194c2d72caa86e95c075e906
+  - filename: model/c1200/unet_512x1024-c1200/weights.bin
+    variant: unet_512x1024
+    platform: c1200
+    task: seg
+    format: weights
+    sha256: a41cb7c7d3e5d51c80bec0c253119e89072a9d4db5801bf39640b5fc647ff1ab
+  - filename: model/c1200/unet_512x512-c1200/unet_512x512.meta
+    variant: unet_512x512
+    platform: c1200
+    task: unet_512x512
+    format: meta
+    sha256: 5c807614409b00a1e01ea36545946990d4ae9e1219a1dfbf88612e380bbb92a2
+  - filename: model/c1200/unet_512x512-c1200/unet_512x512.ModelGraph.bin
+    variant: unet_512x512
+    platform: c1200
+    task: unet_512x512
+    format: bin
+    sha256: 0e8dde3e28b7a9f320b97595c53063b8f0078502540f525ae4467aa33e3eb4f7
+  - filename: model/c1200/unet_512x512-c1200/unet_512x512.ModelGraph.bin.txt
+    variant: unet_512x512
+    platform: c1200
+    task: unet_512x512
+    format: txt
+    sha256: 965e63a44ae1ca7f4738da99c1a15c0dae3d4b3d639a17c898d6137033c59ca8
+  - filename: model/c1200/unet_512x512-c1200/unet_512x512.sdag.bin
+    variant: unet_512x512
+    platform: c1200
+    task: unet_512x512
+    format: bin
+    sha256: 0ced03393ff475b6786c6e349e4f255edc0f1ddee6979edf0f77e5416f02f128
+  - filename: model/c1200/unet_512x512-c1200/weights.bin
+    variant: unet_512x512
+    platform: c1200
+    task: unet_512x512
+    format: weights
+    sha256: a41cb7c7d3e5d51c80bec0c253119e89072a9d4db5801bf39640b5fc647ff1ab

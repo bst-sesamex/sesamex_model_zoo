@@ -1,5 +1,5 @@
 # BSTNNX 8.3.1 image calibration example.
-# Preprocessing adapted from legacy bst_robot_model_zoo/sftp_upload/models/landmark/train/bst_deploy/compiler/main.yaml.
+# Preprocessing parameters: mean, scale and color conversion below are the calibration-time settings.yaml.
 # ONNX is included in assets/; supply representative calibration images.
 # The archived YAML is shared across this model family; verify preprocessing for this variant before accuracy claims.
 model_path: ./assets/size224/mobilenet_224_model_best_gdconv.onnx
